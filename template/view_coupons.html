@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Update Coupons
+                <small>Welcome to Edit coupons...</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                        <form method="post" action="{% url 'update_coupons' %}">
+                            {% csrf_token %}
+                           <div class="row">
+                                <div class="col-lg-12">
+                                        <label for="">Name</label>
+                                        <div class="form-group">                                
+                                                <input type="text" name="name" value="{{ data.name}}" id="" class="form-control" placeholder="">
+                                        </div>
+                                        <label for="">Description</label>
+                                        <div class="form-group">                                
+                                            <textarea type="text" id="" name="description" class="form-control" placeholder="">{{ data.description }}</textarea>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <label for="">Coupon Amount</label>
+                                                <div class="form-group">                                
+                                                    <input type="text" id="" name="amount" value="{{ data.amount}}" class="form-control" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label for="">Amount</label>
+                                                <select class="form-control show-tick"name="coupons_amount">
+                                                    {% if data.name == 'Amount' %}
+                                                    <option selected>Amount</option>
+                                                    {% else %}
+                                                    <option>Amount</option>
+                                                    {% endif %}
+                                                    {% if data.name == 'Percent' %}
+                                                    <option>Percent</option>
+                                                    {% else %}
+                                                    <option>Percent</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label for="">Coupon Minimum Order</label>
+                                        <div class="form-group">                                
+                                                <input type="text" id=""name="coupons_order" value="{{ data.coupons_order}}"class="form-control" placeholder="The minimum order value before the coupon is valid">
+                                        </div>
+                                        <label for="">Coupon Code</label>
+                                        <div class="form-group">                                
+                                                <input type="text" id="" name="couposn_code" value="{{ data.couposn_code}}"class="form-control" placeholder="You can enter your own code here, or leave blank for an auto generated one.">
+                                        </div>
+                                        <label for="">No. of Coupon</label>
+                                        <div class="form-group">                                
+                                                <input type="text"name="no_of_coupons" value="{{ data.no_of_coupons}}" id="" class="form-control" placeholder="The maximum number of times the coupon can be used, leave blank if you want no limit.">
+                                        </div>
+                                        <label for="">Uses per Customer</label>
+                                        <div class="form-group">                                
+                                                <input type="text"name="user_per_customs" id="" value="{{ data.user_per_customs}}" class="form-control" placeholder="Number of times a user can use the coupon, leave blank for no limit.">
+                                        </div>
+                                        <label for="">Start Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text"name="start_date" value="{{ data.start_date}}"class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                        <label for="">End Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text"value="{{ data.end_date}}" class="form-control date"name="end_date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                </div>
+                                
+
+                                <a href="/coupons" class="btn btn-danger  btn-round waves-effect">Go Back</a>
+                           </div>
+                                    </form>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+
+<script src="../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script> <!-- Bootstrap Colorpicker Js --> 
+<script src="../assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script> <!-- Input Mask Plugin Js --> 
+<script src="../assets/plugins/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js --> 
+<script src="../assets/plugins/jquery-spinner/js/jquery.spinner.js"></script> <!-- Jquery Spinner Plugin Js --> 
+<script src="../assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script> <!-- Bootstrap Tags Input Plugin Js --> 
+<script src="../assets/plugins/nouislider/nouislider.js"></script> <!-- noUISlider Plugin Js -->
+<script src="../assets/plugins/select2/select2.min.js"></script> <!-- Select2 Js -->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="assets/js/pages/forms/advanced-form-elements.js"></script> 
+</body>
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:45:30 GMT -->
+{#</html>#}
+{% endblock %}

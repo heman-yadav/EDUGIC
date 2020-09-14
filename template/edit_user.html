@@ -1,0 +1,106 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Update User
+                <small>Welcome to Edit Page..</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="post" action="{% url 'update_user' %}">
+                                {% csrf_token %}
+                                <label for="email_address">User Level</label>
+                                <select class="form-control show-tick" name="user_level">
+                                   {% if data.user_level == 'Administrator' %}
+                                    <option selected>Administrator</option>
+                                    {% else %}
+                                    <option>Administrator</option>
+                                    {% endif %}
+                                    {% if data.user_level == 'Instructor' %}
+                                    <option selected>Instructor</option>
+                                    {% else %}
+                                    <option>Instructor</option>
+                                    {% endif %}
+                                    {% if data.user_level == 'Manager' %}
+                                    <option selected>Manager</option>
+                                    {% else %}
+                                    <option>Manager</option>
+                                    {% endif %}
+                                </select>
+                                <label for="email_address">Group</label>
+                                <select class="form-control show-tick" name="group">
+                                    {% if data.group == 'CPMT' %}
+                                    <option selected>CPMT</option>
+                                    {% else %}
+                                    <option>CPMT</option>
+                                    {% endif %}
+                                    {% if data.group == 'IIT' %}
+                                    <option selected>IIT</option>
+                                    {% else %}
+                                    <option>IIT</option>
+                                    {% endif %}
+                                    {% if data.group == 'Scholarship Exam Class 12th' %}
+                                    <option selected>Scholarship Exam Class 12th</option>
+                                    {% else %}
+                                    <option>Scholarship Exam Class 12th</option>
+                                    {% endif %}
+                                </select>  
+                                <label for="email_address">Username</label>
+                                <div class="form-group">                                
+                                    <input type="text" name="username" value="{{ data.username }}" id="email_address" class="form-control" placeholder="Enter your Username">
+                                </div>
+                                <label for="password">Password</label>
+                                <div class="form-group">                                
+                                    <input type="password" name="password" value="{{ data.password }}" id="password" class="form-control" placeholder="Enter your password">
+                                </div>
+                                <label for="email_address">Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" name="name" value="{{ data.name }}" id="email_address" class="form-control" placeholder="Enter your Name">
+                                </div>
+                                <label for="password">Email</label>
+                                <div class="form-group">                                
+                                    <input type="email" name="email" value="{{ data.email }}" id="password" class="form-control" placeholder="Enter your Email">
+                                </div>
+                                <label for="password">Mobile</label>
+                                <div class="form-group">                                
+                                    <input type="text" name="mobile" value="{{ data.mobile }}" id="password" class="form-control" placeholder="Enter your Mobile">
+                                </div>
+                                <button type="submit" class="btn btn-success btn-primary btn-round waves-effect">Save</button>
+                                <button type="reset" class="btn btn-raised btn-warning btn-round waves-effect">Reset</button>
+                                <a href="/" class="btn btn-raised btn-danger btn-round waves-effect">Close</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+</body>
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:45:30 GMT -->
+{#</html>#}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>View Video Tutorial
+                <small>Welcome to View Page....</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="post" action="{% url 'update_videotutorial' %}">
+                                {% csrf_token %}
+                                <label for="email_address">Subject Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" value="{{ data.subject_name }}" name="subject_name" id="" class="form-control" placeholder="Enter your Subject name">
+                                </div>
+                                <label for="email_address">Topic Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" name="topic_name" value="{{ data.topic_name }}" id="" class="form-control" placeholder="Enter your topic name">
+                                </div>
+                                <label for="password">Details</label>
+                                <div class="form-group">                                
+                                    <textarea type="text" name="details" id="" class="form-control" placeholder="Enter your detail">{{ data.details }}</textarea>
+                                </div>
+                                <label for="email_address">Video URL</label>
+                                <div class="form-group">                                
+                                    <input type="url" name="video_url" value="{{ data.video_url }}" name="url" id="url" class="form-control"
+                                    placeholder="https://example.com"
+                                    pattern="https://.*">
+                                </div>
+{#                                <button type="submit" class="btn btn-success  btn-round waves-effect">Save</button>#}
+                                <a href="/video_tutorial" class="btn btn-danger  btn-round waves-effect">Close</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js -->
+
+{% endblock %}

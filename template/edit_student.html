@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Update Student
+                <small>Welcome to EDUGIC</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+
+                        <form action="{% url 'update_student' %}" method="post">
+                        {% csrf_token %}
+                           <div class="row">
+                                <div class="col-lg-6">
+                                            <input type="hidden" name="id" id="" value="{{ data.id }}">
+
+                                        <label for="">Email</label>
+                                        <div class="form-group">
+                                            <input type="text" name="email" id="" class="form-control" placeholder="" value="{{ data.email }}">
+                                        </div>
+                                        <label for="">Name</label>
+                                        <div class="form-group">
+                                                <input type="text" name="name" id="" class="form-control" placeholder="" value="{{ data.name }}">
+                                        </div>
+                                        <label for="">Address</label>
+                                        <div class="form-group">
+                                            <input type="text" name="address" id="" class="form-control" placeholder=""value="{{ data.address }}">
+                                        </div>
+                                        <label for="">Alternate Number</label>
+                                        <div class="form-group">
+                                                <input type="text" name="alt_number" id="" class="form-control" placeholder="" value="{{ data.alternate }}">
+                                        </div>
+                                        <label for="">Admission Date</label>
+                                         <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="zmdi zmdi-calendar"></i>
+                                            </span>
+                                            <input type="text" name="admission_date" class="form-control datetimepicker" value="{{ data.admission_date }}" placeholder="Please choose date & time...">
+                                        </div>
+                                        <label for="">Expiry Days</label>
+                                        <div class="form-group">
+                                                <input type="text" name="expiry_date" id="" class="form-control" placeholder="" value="{{ data.expiry_date }}">
+                                        </div>
+                                        <label for="">Upload Photo</label>
+                                        <div class="form-group">
+                                                <input type="file" name="myFile" value="{{ data.upload_photo }}">
+                                        </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="email_address">Group</label>
+                                    <select class="form-control show-tick" name="group" >
+                                        <option>---Select Group Name---</option>
+                                       {% if data.group == 'Ketchup' %}
+                                        <option selected>Ketchup</option>
+                                        {% else %}
+                                    <option>Ketchup</option>
+                                        {% endif %}
+                                      {% if data.group == 'Relish' %}
+                                        <option selected>Relish</option>
+                                    {% else %}
+                                        <option>Relish</option>
+
+                                        {% endif %}
+
+                                    </select>
+                                    <label for="">Password</label>
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="" class="form-control" placeholder="" value="{{ data.password }}">
+                                        </div>
+                                        <label for="">Phone</label>
+                                        <div class="form-group">
+                                                <input type="text" name="phone" id="" class="form-control" placeholder="" value="{{ data.phone }}">
+                                        </div>
+                                        <label for="">Enrollment Number</label>
+                                        <div class="form-group">
+                                            <input type="text" name="enroll_number" id="" class="form-control" placeholder="" value="{{ data.enrollment_number }}">
+                                        </div>
+                                        <label for="email_address">Status</label>
+                                    <select class="form-control show-tick" name="status" required>
+                                        <option value="" disabled selected hidden>Select Status</option>
+                                        {% if data.status == 'active' %}
+                                        <option selected>Active</option>
+                                        {% else %}
+                                        <option>Active</option>
+                                        {% endif %}
+                                        {% if data.status == "panding" %}
+                                        <option selected>Pending</option>
+                                        {% else %}
+                                        <option>Pending</option>
+                                        {% endif %}
+                                        {% if data.status == 'suspend' %}
+                                        <option>Suspend</option>
+                                        {% else %}
+                                        <option>Suspend</option>
+                                        {% endif %}
+                                    </select>
+
+                                </div>
+                                <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button><br>
+                                <button type="reset" class="btn btn-raised btn-warning btn-round waves-effect">Reset All</button>
+                                <a href="{% url 'student' %}" class="btn btn-raised btn-danger btn-round waves-effect">Close</a>
+                           </div>
+                        </form>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+{% endblock %}

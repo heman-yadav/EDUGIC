@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+<form method="post" action="{% url 'multiple_delete_subject' %}" >
+    {% csrf_token %}
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Subject</h2>
+             </div>
+             <div class="btn-group" style="margin-left: 15px;">
+                <a href="{% url 'add_subject' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Subject</a>
+{#                <a href="" name="" data-toggle="modal" data-target="#largeModal" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Views</a>#}
+                <button type="submit" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</button>
+            </div>
+
+            </div>
+            <div class="card" style="padding: 10px; margin-top: 15px;">
+            <div class="table-responsive">
+{#                {% if addsubject %}#}
+{#                <form method="post" action="{% url 'multiple_delete_subject' %}">#}
+{#                {% csrf_token %}#}
+                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                    <thead>
+                        <tr>
+                        <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                        <th>Id</th>
+                        <th>Group</th>
+                        <th>Subject Name</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for i in addsubject %}
+                        <tr>
+                        <td><input type="checkbox" name="selectAll" value="{{ i.id }}" id="selectAll"/></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.group_name }}</td>
+                        <td>{{ i.subject_name }}</td>
+                        <td hidden>{{ i.id }}</td>
+                       <td ><a href="{% url 'edit_subject' %}?id={{ i.id }}"  class="btn bg-warning waves-effect waves-light ">Edit</a>
+                           <a href="{% url 'view_subject' %}?id={{ i.id }}"  class="btn bg-blue waves-effect waves-light ">view</a>
+                           <a href="{% url 'delete_subject' %}?id={{ i.id }}"  class="btn bg-danger waves-effect waves-light ">Delete</a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+{#                <center><button type="submit">Delete</button> </center>#}
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+</section>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                        <div class="modal-header">
+                                <h4 class="title" id="largeModalLabel">Edit</h4>
+                            </div>
+                            <form method="post" action="{% url 'subjects' %}">
+                                {% csrf_token %}
+                                    <label for="email_address">Group Name</label>
+                                    <select class="form-control show-tick">
+                                        <option>CPMT</option>
+                                        <option>IIT</option>
+                                        <option>Relish</option>
+                                    </select>
+                                <label for="email_address">Student Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="email_address" class="form-control" placeholder="Enter your student name">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-round waves-effect">SAVE</button>
+                                    <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                                </div>
+                            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

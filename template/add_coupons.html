@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Add Coupons
+                <small>Welcome to EDUGIC</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                        <form action="{% url 'add_coupons' %}" method= "post">
+                        {% csrf_token %}
+                           <div class="row">
+                                <div class="col-lg-12">
+                                        <label for="">Name</label>
+                                        <div class="form-group">
+                                                <input type="text" name='name' id="" class="form-control" placeholder="" >
+                                        </div>
+                                        <label for="">Description</label>
+                                        <div class="form-group">
+                                            <textarea type="text" name='description' id="" class="form-control" placeholder="" ></textarea>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <label for="">Coupon Amount</label>
+                                                <div class="form-group">
+                                                    <input type="text" name='coupons_amount' id="" class="form-control" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label for="">Amount</label>
+                                                <select class="form-control show-tick"name='amount'>
+                                                    <option>Amount</option>
+                                                    <option>Percent</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label for="">Coupon Minimum Order</label>
+                                        <div class="form-group">
+                                                <input type="text" id="" name='coupons_order' class="form-control" placeholder="The minimum order value before the coupon is valid">
+                                        </div>
+                                        <label for="">Coupon Code</label>
+                                        <div class="form-group">
+                                                <input type="text" name='couposn_code' id="" class="form-control" placeholder="You can enter your own code here, or leave blank for an auto generated one.">
+                                        </div>
+                                        <label for="">No. of Coupon</label>
+                                        <div class="form-group">
+                                                <input type="text" name='no_of_coupons' id="" class="form-control" placeholder="The maximum number of times the coupon can be used, leave blank if you want no limit.">
+                                        </div>
+                                        <label for="">Uses per Customer</label>
+                                        <div class="form-group">
+                                                <input type="text" id="" name='user_per_customs' class="form-control" placeholder="Number of times a user can use the coupon, leave blank for no limit.">
+                                        </div>
+                                        <label for="">Start Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text" name='start_date' class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                        <label for="">End Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text" name='end_date' class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                               <a href="{% url 'coupons' %}" class="btn btn-raised btn-primary btn-round waves-effect">Close</a>
+                           </div>
+                        </form>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+{% endblock %}

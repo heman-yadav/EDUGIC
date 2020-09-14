@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Update Question
+                <small>Welcome to Edit Page...</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="POST" action="{% url 'update_question' %}">
+                                {% csrf_token %}
+                            {% for i in data.d5 %}
+                                <input type="hidden" name="id" value="{{ i.id }}">
+                            {% endfor %}
+                                <label>Passage ID</label>
+                            {% for i in data.d5 %}
+                                <div class="form-group">                                
+                                    <input type="text" value="{{ i.passage_id }}" name="passage_id" id="" class="form-control" placeholder="Passage ID if any">
+                                </div>
+                            {% endfor %}
+                                <label for="email_address">Question Type</label>
+
+                                <div class="form-group">
+                                        <div class="radio inlineblock m-r-20">
+                                            <input type="radio" name="question_type" id="objective" class="with-gap" value="Objective">
+                                            <label for="objective">Objective</label>
+                                        </div>
+                                        <div class="radio inlineblock">
+                                            <input type="radio" name="question_type" id="t_F" class="with-gap" value="True / False">
+                                            <label for="t_F">True / False</label>
+                                        </div>
+                                        <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="question_type" id="fill_blanks" class="with-gap" value="Fill in the blanks">
+                                                <label for="fill_blanks">Fill in the blanks</label>
+                                            </div>
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="question_type" id="subjective" class="with-gap" value="Subjective">
+                                                <label for="subjective">Subjective</label>
+                                            </div>
+                                    </div>
+                                    <div class="body">
+
+                                        <div id="wizard_horizontal">
+                                            <h2>Question</h2>
+                                            {% for i in data.d5 %}
+                                            <section>
+                                                <textarea type="text" name="question" id="" class="form-control" placeholder="Type your question">{{ i.question }}</textarea>
+                                            </section>
+                                            {% endfor %}
+                                            <h2>Option 1</h2>
+                                        {% for i in data.d5 %}
+                                            <section>
+                                                <textarea type="text" id="" name="option1" class="form-control" placeholder="Option 1">{{ i.option1 }}</textarea>
+                                            </section>
+                                        {% endfor %}
+                                            <h2>Option 2</h2>
+                                        {% for i in data.d5 %}
+                                            <section>
+                                                <textarea type="text" id="" name="option2" class="form-control" placeholder="Option 2">{{ i.option2 }}</textarea>
+                                            </section>
+                                        {% endfor %}
+                                            <h2>Option 3</h2>
+                                        {% for i in data.d5 %}
+                                            <section>
+                                                <textarea type="text" id="" name="option3" class="form-control" placeholder="Option 3">{{ i.option3 }}</textarea>
+                                            </section>
+                                        {% endfor %}
+                                            <h2>Option 4</h2>
+                                        {% for i in data.d5 %}
+                                            <section>
+                                                <textarea type="text" id="" name="option4" class="form-control" placeholder="Option 4">{{ i.option4 }}</textarea>
+                                            </section>
+                                        {% endfor %}
+                                            <h2>Answers</h2>
+                                        {% for i in data.d5 %}
+                                            <section>
+                                                <textarea type="text" id="" name="answer" class="form-control" placeholder="Answers">{{ i.answer }}</textarea>
+                                            </section>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <label for="email_address">True / False</label>
+                                    <div class="form-group">
+                                    {% if data.d5.true_false1 == 'T'%}
+                                        <div class="radio inlineblock m-r-20">
+                                            <input type="radio" name="true_false" id="true" class="with-gap" value="T" checked>
+                                            <label for="true">True</label>
+                                           {% else %}
+                                            <div class="radio inlineblock m-r-20">
+                                            <input type="radio" name="true_false" id="true" class="with-gap" value="T">
+                                            <label for="true">True</label>
+                                        </div>
+                                        {% endif %}
+                                    {% if data.d5.true_false1 == 'F' %}
+                                        <div class="radio inlineblock">
+                                            <input type="radio" name="true_false" id="false" class="with-gap" value="F" checked>
+                                        </div>
+                                    {% else %}
+                                    <div class="radio inlineblock">
+                                            <input type="radio" name="true_false" id="false" class="with-gap" value="F">
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                                    <label for="email_address">Blank Space</label>
+                            {% for i in data.d5 %}
+                                    <div class="form-group">                                
+                                        <textarea type="text" id="" value="{{ i.black_space }}" name="black_space" class="form-control" placeholder="Enter your Blank Space"></textarea>
+                                    </div>
+                            {% endfor %}
+                                    <label for="email_address">Explanation (Optional)</label>
+                            {% for i in data.d5 %}
+                                    <div class="form-group">                                
+                                        <textarea type="text" id="" name="explanation" class="form-control" placeholder="Provide explanation in support of correct answer">{{ i.explanation }}</textarea>
+                                    </div>
+                            {% endfor %}
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div style="margin-bottom: 12px;">
+
+                                                <label for="">Group</label>
+                                                <select class="form-control show-tick" name="group">
+
+                                                   {% for i in data.d4 %}
+                                                    {% for j in data.d5 %}
+                                                    {% if j.group == i.group_name %}
+                                                    <option selected>{{ i.group_name }}</option>
+                                                    {% else %}
+                                                    <option>{{ i.group_name }}</option>
+                                                       {% endif %}
+                                                        {% endfor %}
+                                                    {% endfor %}
+
+                                                </select>
+                                            </div>
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Topics</label>
+                                                <select class="form-control show-tick" name="topics">
+
+                                                    {% for i in data.d3 %}
+                                                    {% for j in data.d5 %}
+                                                    {% if j.topics == i.topic_name %}
+                                                    <option selected>{{ i.topic_name }}</option>
+                                                    {% else %}
+                                                    <option>{{ i.topic_name }}</option>
+                                                    {% endif %}
+                                                        {% endfor %}
+                                                {% endfor %}
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Subject</label>
+                                                <select class="form-control show-tick" name="subject">
+
+                                                     {% for i in data.d1 %}
+                                                         {% for j in data.d5 %}
+                                                             {% if j.subject == i.subject_name %}
+                                                    <option selected>{{ i.subject_name }}</option>
+                                                    {% else %}
+                                                    <option>{{ i.subject_name }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% endfor %}
+
+                                                </select>
+                                            </div>
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Sub Topics</label>
+                                                <select class="form-control show-tick" name="sub_topics">
+                                                     {% for i in data.d2 %}
+                                                         {% for j in data.d5 %}
+                                                             {% if j.topics == i.topic_name %}
+                                                    <option selected>{{ i.topic_name }}</option>
+                                                    {% else %}
+                                                    <option>{{ i.topic_name }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% endfor %}
+
+                                                </select>
+                                            </div>
+                                            </div>
+                                    </div>
+
+                                    <label for="">Hint (Optional)</label>
+                                {% for i in data.d5 %}
+                                <div class="form-group">                                
+                                    <input type="text" id="" value="{{ i.hint }}" name="hint" class="form-control" placeholder="Passage ID if any">
+                                </div>
+                            {% endfor %}
+                                <div class="row clearfix">
+                                    <div class="col-lg-4">
+                                        <label for="">Marks</label>
+                                        {% for i in data.d5 %}
+                                        <div class="input-group spinner" data-trigger="spinner">                                    
+                                            <input type="text" name="marks" value="{{ i.marks }}" class="form-control text-center" placeholder="Marks" data-rule="quantity">
+                                            <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-lg-4">
+                                            <label for="">Negative Marks</label>
+                                       {% for i in data.d5 %}
+                                            <div class="input-group spinner" data-trigger="spinner">                                    
+                                                <input type="text" value="{{ i.negative_marks }}" name="negative_marks" class="form-control text-center" placeholder="without minus sign" data-rule="quantity">
+                                                <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="">Difficulty Level</label>
+                                          <select class="form-control show-tick" name="difficult_level">
+
+                                                </select>
+                                    </div>
+                                </div>
+
+                               <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                               <a href="{% url 'questions' %}" class="btn btn-raised btn-primary btn-round waves-effect">Close</a>
+                                    </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

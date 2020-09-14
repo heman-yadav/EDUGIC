@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<!-- Main Content -->
+<section class="content home">
+<form method="post" action="{% url 'multiple_delete_group'%}">
+{% csrf_token %}
+
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Group</h2>
+             </div>            
+            <div class="btn-group" style="margin-left: 15px;">
+                <a href="{% url 'add_group' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Group</a>
+                <a href="" name="" data-toggle="modal" data-target="#largeModal" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Edit</a>
+               <button type="submit" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</button>
+            </div>
+            </div>
+            <div class="card" style="padding: 10px; margin-top: 15px;">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                    <thead>
+                        <tr>
+                        <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                        <th>#</th>
+                        <th>Group Name</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                    {% for ab in add_group %}
+
+                        <tr>
+                        <td><input type="checkbox" name="selectAll" id="selectAll" value="{{ ab.id }}"></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ ab.group_name }}</td>
+                        <td>{{ ab.description}}</td>
+                        <td hidden>{{ ab.id}}</td>
+                            <td>
+                            <a href="{% url 'delete_group' %}?id={{ ab.id }} "  class="btn bg-blue waves-effect waves-light ">Delete</a>
+                            <a href="{% url 'view_group' %}?id={{ ab.id }} "  class="btn bg-blue waves-effect waves-light ">View</a>
+                                <a href="{% url 'edit_group' %}?id={{ ab.id }} "  class="btn bg-blue waves-effect waves-light ">Edit</a></td>
+
+                        </td>
+                        </tr>
+                    {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+</section>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                        <div class="modal-header">
+                                <h4 class="title" id="largeModalLabel">Edit</h4>
+                            </div>
+                            <form>
+                                    <label for="email_address">Group Name</label>
+                                    <select class="form-control show-tick">
+                                        <option>CPMT</option>
+                                        <option>IIT</option>
+                                        <option>Relish</option>
+                                    </select>
+                                <label for="email_address">Student Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="email_address" class="form-control" placeholder="Enter your student name">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-round waves-effect">SAVE</button>
+                                    <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                                </div>
+                            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+<!-- Jquery DataTable Plugin Js --> 
+<script src="assets/bundles/datatablescripts.bundle.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/datatables-demo.js"></script>
+</body>
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:45:30 GMT -->
+{#</html>#}
+
+{% endblock %}

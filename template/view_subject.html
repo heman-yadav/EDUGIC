@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>View Subject
+                <small>View page of subject</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="POST" action="{% url 'update_subject' %}">
+                            {% csrf_token %}
+                                <label for="email_address">Group Name</label>
+                                <select class="form-control show-tick" name="group_name">
+                                    {% if data.group_name == 'CPMT' %}
+                                    <option SELECTED>CPMT</option>
+                                    {% else %}
+                                    <option>CPMT</option>
+                                    {% endif %}
+                                    {% if data.group_name == 'IIT' %}
+                                    <option selected>IIT</option>
+                                    {% else %}
+                                    <option>IIT</option>
+                                    {% endif %}
+                                    {% if data.group_name == 'Relish' %}
+                                    <option selected>Relish</option>
+                                    {% else %}
+                                    <option>Relish</option>
+                                    {% endif %}
+                                </select>
+                                <label for="email_address">Subject Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="subject_name" name="subject_name" value="{{ data.subject_name}}" class="form-control" placeholder="">
+                                </div>
+{#                                <button type="submit" class="btn btn-success  btn-round waves-effect">Save</button>#}
+{#                                <button type="reset" class="btn btn-warning  btn-round waves-effect">Close</button>#}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+</body>
+
+{#<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:45:30 GMT -->#}
+{#</html>#}
+{% endblock %}

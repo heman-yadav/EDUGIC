@@ -1,0 +1,555 @@
+{% load static %}
+<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="description" content="sQuare Bootstrap 4 Admin Dashboard with ui kit.">
+<title></title>
+
+<link rel="stylesheet" href="{% static 'new/assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'new/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'new/assets/plugins/morrisjs/morris.min.css' %}" />
+<link rel="stylesheet" href="{% static 'new/assets/plugins/bootstrap-select/css/bootstrap-select.css' %}" /><!-- Bootstrap Select Css -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css' %}" /><!-- Colorpicker Css -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/multi-select/css/multi-select.css' %}"><!-- Multi Select Css -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/jquery-spinner/css/bootstrap-spinner.css' %}"><!-- Bootstrap Spinner Css -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css' %}"><!-- Bootstrap Tagsinput Css -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/nouislider/nouislider.min.css' %}" /><!-- noUISlider Css -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/select2/select2.css' %}" /><!-- Select2 -->
+<link rel="stylesheet" href="{% static 'new/assets/plugins/jquery-steps/jquery.steps.css' %}">
+<link href="{% static 'new/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'new/assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/timeline.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+
+
+<!-- Custom Css -->
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/color_skins.css' %}">
+</head>
+<body class="theme-green">
+<!-- Page Loader -->
+<div class="page-loader-wrapper" style="background-color: rgb(25, 31, 40);">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'new/assets/images/edugic.png' %}" width="38" height="48" alt="sQuare"></div>
+        <p>Please wait...</p>        
+    </div>
+</div>
+
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+<!-- Top Bar -->
+<nav class="navbar">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html"><img src="{% static 'new/assets/images/edugic.png' %}" width="30" alt="EDUGIC"><span class="m-l-10">EDUGIC</span></a>
+            </div>
+        </li>        
+        <li>
+            <a href="javascript:void(0);" class="menu-sm" data-close="true">
+                <i class="zmdi zmdi-arrow-left"></i>
+                <i class="zmdi zmdi-arrow-right"></i>
+            </a>
+        </li>
+        <li class="dropdown app_menu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-apps"></i></a>
+            <ul class="dropdown-menu pullDown">
+                <li><a href="mail-inbox.html"><i class="zmdi zmdi-email m-r-10"></i><span>Mail</span></a></li>
+                <li><a href="contact.html"><i class="zmdi zmdi-accounts-list m-r-10"></i><span>Contacts</span></a></li>
+                <li><a href="chat.html"><i class="zmdi zmdi-comment-text m-r-10"></i><span>Chat</span></a></li>
+                
+                <li><a href="events.html"><i class="zmdi zmdi-calendar-note m-r-10"></i><span>Calendar</span></a></li>
+                <li><a href="javascript:void(0)"><i class="zmdi zmdi-arrows m-r-10"></i><span>Notes</span></a></li>
+                                
+            </ul>
+        </li>
+        <li class="dropdown notifications hidden-sm-down"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+            <span class="label-count">5</span>
+            </a>
+            <ul class="dropdown-menu pullDown">
+                <li class="header">New Message</li>
+                <li class="body">
+                    <ul class="menu list-unstyled">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'new/assets/images/xs/avatar5.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Alexander <span class="time">13min ago</span></span>
+                                        <span class="message">Meeting with Shawn at Stark Tower by 8 o'clock.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'new/assets/images/xs/avatar6.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Grayson <span class="time">22min ago</span></span>
+                                        <span class="message">You have 5 unread emails in your inbox.</span>                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'new/assets/images/xs/avatar3.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Sophia <span class="time">31min ago</span></span>
+                                        <span class="message">OrderPlaced: You received a new oder from Tina.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>                
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="{% static 'new/assets/images/xs/avatar4.jpg' %}" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Isabella <span class="time">35min ago</span></span>
+                                        <span class="message">Lara added a comment in Blazing Saddles.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footer"> <a href="javascript:void(0);">View All</a> </li>
+            </ul>
+        </li>
+             
+        <li class="search_bar hidden-sm-down">
+            <div class="input-group">                
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </li>
+        <li class="float-right">            
+            <a href="javascript:void(0);" class="fullscreen hidden-md-down hidden-sm-down" data-provide="fullscreen"><i class="zmdi zmdi-fullscreen"></i></a>            
+            <a href="javascript:void(0);" class="js-right-chat"><i class="zmdi zmdi-comments"></i></a>
+            <a href="javascript:void(0);" class="js-right-sidebar"><i class="zmdi zmdi-settings"></i></a>
+            
+            <a href="sign-in.html" class="mega-menu"><i class="zmdi zmdi-power"></i></a>
+        </li>        
+    </ul>
+</nav>
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <div class="menu">        
+        <ul class="list">
+            <li>
+                <div class="user-info">
+                    <div class="image"><a href="profile.html"><img src="{% static 'new/assets/images/profile_av.jpg' %}" alt="User"></a></div>
+                    <div class="detail">
+                        <h4>EDUGIC</h4>
+                        <p class="m-b-0">Admin</p>
+                        <a href="events.html" title="Events"><i class="zmdi zmdi-calendar"></i></a>
+                        <a href="mail-inbox.html" title="Inbox"><i class="zmdi zmdi-email"></i></a>
+                        <a href="contact.html" title="Contact List"><i class="zmdi zmdi-account-box-phone"></i></a>
+                        <a href="#" title="Contact List"><i class="zmdi zmdi-globe-alt"></i></a>
+                        <div class="row">
+                            <div class="col-4 p-r-0">
+                                <h6 class="m-b-5">852</h6>
+                                <small>Sales</small>
+                            </div>
+                            <div class="col-4 p-l-0 p-r-0">
+                                <h6 class="m-b-5">513</h6>
+                                <small>Examination</small>
+                            </div>
+                            <div class="col-4 p-l-0">
+                                <h6 class="m-b-5">$34M</h6>
+                                <small>Centers</small>
+                            </div>                            
+                        </div>
+                    </div>                    
+                </div>
+            </li>
+            
+           <li class="active open"><a href="index.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
+            </li>
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Communication</span></a>
+                <ul class="ml-menu">
+                    <li><a href="mail-inbox.html">Inbox</a></li>
+                    <li><a href="chat.html">Chat</a></li>
+                    <li><a href="file-dashboard.html">File Manager</a></li>
+                    <li><a href="contact.html">Contact list</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>EDUGIC</span></a>
+                <ul class="ml-menu">
+                    <li><a href="{% url 'users' %}">Users</a> </li>
+                    <li><a href="{% url 'packages' %}">Packages</a> </li>
+                    <li><a href="{% url 'subjects' %}">Subjects</a> </li>
+                    <li><a href="{% url 'video_tutorial' %}">Video Tutorial</a> </li>
+                    <li><a href="{% url 'pdf_tutorial' %}">PDF Tutorial</a> </li>
+                    <li><a href="{% url 'topics' %}">Topics</a> </li>
+                    <li><a href="{% url 'sub_topics' %}">Sub Topics</a> </li>
+                    <li><a href="{% url 'questions' %}">Questions</a> </li>
+                    <li><a href="{% url 'result' %}">Result</a> </li>
+                    <li><a href="{% url 'exam' %}">Exam</a></li>
+                    <li><a href="{% url 'exam_center' %}">Exam Center</a></li>
+                    <li><a href="{% url 'student' %}">Student</a></li>
+                    <li><a href="{% url 'coupons' %}">Coupons</a></li>
+                    <li><a href="{% url 'job' %}">Job</a></li>
+                    <li><a href="{% url 'add_grouptable' %}">Group</a></li>
+                </ul>
+            </li>
+            <li class="sm_menu_btm"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-lock"></i><span>Authentication</span></a>
+                <ul class="ml-menu">
+                    <li><a href="{% url 'sign_in' %}">Sign In</a></li>
+                    <li><a href="{% url 'sign_up' %}">Sign Up</a></li>
+                    <li><a href="forgot-password.html">Forgot Password</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
+<!-- Right Chatbar -->
+<aside id="rightchat" class="right_chat">
+    <div class="chat_body">
+        <div class="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </div>
+        <ul class="chat-widget m-b-0 clearfix">
+            <li class="left float-left">                    
+                <div class="chat-info">                        
+                    <span class="datetime">6:12</span>                            
+                    <span class="message">Hello, John </span>
+                </div>
+            </li>
+            <li class="right">
+                <div class="chat-info">
+                    <a class="name" href="javascript:void(0);">Alexander</a>
+                    <span class="datetime">6:15</span>
+                    <span class="message">Hi, Alexander<br> How are you!</span>
+                </div>
+            </li>
+            <li class="right">
+                <div class="chat-info">
+                    <a class="name" href="javascript:void(0);">Alexander</a>
+                    <span class="datetime">6:16</span>
+                    <span class="message">There are many variations of passages of Lorem Ipsum available</span>
+                </div>
+            </li>
+            <li class="left float-left">
+                <div class="chat-info">
+                    <span class="datetime">6:25</span>
+                    <span class="message">Hi, Alexander,<br> John <br> What are you doing?</span>
+                </div>
+            </li>
+            <li class="left float-left">
+                <div class="chat-info">
+                    <span class="datetime">6:28</span>
+                    <span class="message">I would love to join the team.</span>
+                </div>
+            </li>
+                <li class="right">
+                <div class="chat-info">
+                    <span class="datetime">7:02</span>
+                    <span class="message">Hello, <br>Michael</span>
+                </div>
+            </li>
+        </ul>
+        <div class="enter_msg">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter text here...">
+                <span class="input-group-addon"><i class="zmdi zmdi-mail-send"></i></span>
+            </div>
+        </div>
+    </div>    
+    <div class="chat_list">
+        <ul class="list-unstyled clearfix">
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar1.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar2.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li class="active"><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar3.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar4.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar5.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar6.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar7.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar8.jpg' %}" class="rounded-circle" alt=""></a></li>
+            <li><a href="javascript:void(0);"><img src="{% static 'new/assets/images/xs/avatar9.jpg' %}" class="rounded-circle" alt=""></a></li>
+        </ul>
+    </div>
+</aside>
+<!-- Right Sidebar -->
+<aside id="rightsidebar" class="right-sidebar">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#setting">Setting</a></li>        
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#activity">Activity</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane slideRight active" id="setting">
+            <div class="slim_scroll">
+                <div class="card">
+                    <h6>Skins</h6>
+                    <ul class="choose-skin list-unstyled">
+                        <li data-theme="purple">
+                            <div class="purple"></div>
+                        </li>                   
+                        <li data-theme="blue">
+                            <div class="blue"></div>
+                        </li>
+                        <li data-theme="cyan" class="active">
+                            <div class="cyan"></div>                    
+                        </li>
+                        <li data-theme="green">
+                            <div class="green"></div>
+                        </li>
+                        <li data-theme="orange">
+                            <div class="orange"></div>
+                        </li>
+                        <li data-theme="blush">
+                            <div class="blush"></div>                    
+                        </li>
+                    </ul>                    
+                </div>
+                <div class="card theme-light-dark">
+                    <h6>Left Menu</h6>
+                    <button class="t-light btn btn-default btn-simple btn-round">Light</button>
+                    <button class="t-dark btn btn-default btn-round">Dark</button>					
+                </div> 
+                <div class="card">
+                    <h6>General Settings</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">Report Panel Usage</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox2" type="checkbox" checked="">
+                                <label for="checkbox2">Email Redirect</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox3" type="checkbox" checked="">
+                                <label for="checkbox3">Notifications</label>
+                            </div>                        
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox4" type="checkbox" checked="">
+                                <label for="checkbox4">Auto Updates</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox5" type="checkbox" checked="">
+                                <label for="checkbox5">Offline</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox6" type="checkbox" checked="">
+                                <label for="checkbox6">Location Permission</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>                            
+                <div class="card">
+                    <h6>Information Summary</h6>
+                    <div class="row m-b-20">
+                        <div class="col-7">                            
+                            <small class="displayblock">MEMORY USAGE</small>
+                            <h5 class="m-b-0 h6">512</h5>
+                        </div>
+                        <div class="col-5">
+                            <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="5" data-bar-Spacing="3" data-bar-Color="#00ced1">8,7,9,5,6,4,6,8</div>
+                        </div>
+                    </div>
+                    <div class="row m-b-20">
+                        <div class="col-7">                            
+                            <small class="displayblock">CPU USAGE</small>
+                            <h5 class="m-b-0 h6">90%</h5>
+                        </div>
+                        <div class="col-5">
+                            <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="5" data-bar-Spacing="3" data-bar-Color="#F15F79">6,5,8,2,6,4,6,4</div>
+                        </div>
+                    </div>
+                    <div class="row m-b-20">
+                        <div class="col-7">                            
+                            <small class="displayblock">DAILY TRAFFIC</small>
+                            <h5 class="m-b-0 h6">25 142</h5>
+                        </div>
+                        <div class="col-5">
+                            <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="5" data-bar-Spacing="3" data-bar-Color="#78b83e">7,5,8,7,4,2,6,5</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">                            
+                            <small class="displayblock">DISK USAGE</small>
+                            <h5 class="m-b-0 h6">60.10%</h5>
+                        </div>
+                        <div class="col-5">
+                            <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="5" data-bar-Spacing="3" data-bar-Color="#457fca">7,5,2,5,6,7,6,4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>                
+        </div>
+        <div class="tab-pane slideLeft" id="activity">
+            <div class="slim_scroll">
+                <div class="card user_activity">
+                    <h6>Recent Activity</h6>
+                    <div class="streamline b-accent">
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="{% static 'new/assets/images/xs/avatar4.jpg' %}" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">Admin Birthday</h5>
+                                <small>Jan 21 <a href="javascript:void(0);" class="text-info">Sophia</a>.</small>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="{% static 'new/assets/images/xs/avatar5.jpg' %}" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">Add New Contact</h5>
+                                <small>30min ago <a href="javascript:void(0);">Alexander</a>.</small>
+                                <small><strong>P:</strong> +264-625-2323</small>
+                                <small><strong>E:</strong> maryamamiri@gmail.com</small>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="{% static 'new/assets/images/xs/avatar6.jpg' %}" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">Code Change</h5>
+                                <small>Today <a href="javascript:void(0);">Grayson</a>.</small>
+                                <small>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</small>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="{% static 'new/assets/images/xs/avatar7.jpg' %}" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">New Email</h5>
+                                <small>45min ago <a href="javascript:void(0);" class="text-info">Fidel Tonn</a>.</small>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="card">
+                    <h6>Recent Attachments</h6>
+                    <ul class="list-unstyled activity">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="zmdi zmdi-collection-pdf xl-slategray"></i>                    
+                                <div class="info">
+                                    <h4>info_258.pdf</h4>                    
+                                    <small>2MB</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="zmdi zmdi-collection-text xl-slategray"></i>                    
+                                <div class="info">
+                                    <h4>newdoc_214.doc</h4>                    
+                                    <small>900KB</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="zmdi zmdi-image xl-slategray"></i>                    
+                                <div class="info">
+                                    <h4>MG_4145.jpg</h4>                    
+                                    <small>5.6MB</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="zmdi zmdi-image xl-slategray"></i>                    
+                                <div class="info">
+                                    <h4>MG_4100.jpg</h4>                    
+                                    <small>5MB</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="zmdi zmdi-collection-text xl-slategray"></i>                    
+                                <div class="info">
+                                    <h4>Reports_end.doc</h4>                    
+                                    <small>780KB</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="zmdi zmdi-videocam xl-slategray"></i>                    
+                                <div class="info">
+                                    <h4>movie2018.MKV</h4>                    
+                                    <small>750MB</small>
+                                </div>
+                            </a>
+                        </li>                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+{% block content %}{% endblock %}
+
+<script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="{% static 'assets/bundles/vendorscripts.bundle.js' %}"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="{% static 'assets/bundles/morrisscripts.bundle.js' %}"></script><!-- Morris Plugin Js -->
+<script src="{% static 'assets/bundles/jvectormap.bundle.js' %}"></script> <!-- JVectorMap Plugin Js -->
+<script src="{% static 'assets/bundles/knob.bundle.js' %}"></script> <!-- Jquery Knob-->
+
+<script src="{% static 'assets/bundles/mainscripts.bundle.js' %}"></script>
+<script src="{% static 'assets/js/pages/index.js' %}"></script>
+<!-- Jquery DataTable Plugin Js --> 
+<script src="{% static 'assets/bundles/datatablescripts.bundle.js' %}"></script><!-- Page level custom scripts -->
+<script src="{% static 'js/datatables-demo.js' %}"></script>
+
+<script src="{% static 'new/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js' %}"></script> <!-- Bootstrap Colorpicker Js --> 
+<script src="{% static 'new/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js' %}"></script> <!-- Input Mask Plugin Js --> 
+<script src="{% static 'new/assets/plugins/multi-select/js/jquery.multi-select.js' %}"></script> <!-- Multi Select Plugin Js --> 
+<script src="{% static 'new/assets/plugins/jquery-spinner/js/jquery.spinner.js' %}"></script> <!-- Jquery Spinner Plugin Js --> 
+<script src="{% static 'new/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js' %}"></script> <!-- Bootstrap Tags Input Plugin Js --> 
+<script src="{% static 'new/assets/plugins/nouislider/nouislider.js' %}"></script> <!-- noUISlider Plugin Js -->
+<script src="{% static 'new/assets/plugins/select2/select2.min.js' %}"></script> <!-- Select2 Js -->
+
+<!-- Custom Js --> 
+<script src="{% static 'assets/js/pages/forms/advanced-form-elements.js' %}"></script> 
+
+<script src="{% static 'new/assets/plugins/momentjs/moment.js' %}"></script> <!-- Moment Plugin Js --> 
+<script src="{% static 'new/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js' %}"></script>
+
+<script src="{% static 'assets/js/pages/authentication/page.js' %}"></script>
+<script src="{% static 'assets/js/pages/forms/basic-form-elements.js' %}"></script>
+<script src="{% static 'new/assets/plugins/jquery-spinner/js/jquery.spinner.js' %}"></script>
+<script src="{% static 'new/assets/plugins/momentjs/moment.js' %}"></script> <!-- Moment Plugin Js -->
+<script src="{% static 'new/assets/plugins/jquery-validation/jquery.validate.js' %}"></script> <!-- Jquery Validation Plugin Css -->
+<script src="{% static 'new/assets/plugins/jquery-steps/jquery.steps.js' %}"></script> <!-- JQuery Steps Plugin Js -->
+<script src="{% static 'assets/js/pages/forms/form-wizard.js' %}"></script>
+
+<script src="{% static 'assets/js/pages/charts/jquery-knob.js' %}"></script>
+<script src="{% static 'new/assets/plugins/ckeditor/ckeditor.js' %}"></script> 
+<script src="{% static 'assets/js/pages/forms/editors.js' %}"></script>
+
+<script src="{% static 'assets/js/pages/file/filemanager.js' %}"></script>
+
+
+</body>
+
+</html>

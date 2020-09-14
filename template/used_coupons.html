@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 card" style="padding: 10px; margin-top: 15px;">
+                <h2>Used Coupons</h2>
+                    <form>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-lg-6">
+                                <label for="">Coupon Name</label>
+                                    <div class="form-group">                                
+                                        <input type="text" id="" class="form-control" placeholder="Coupon Name">
+                                    </div>
+                                    <div class="btn-group" style="margin-left: 15px;">
+                                        <a href="add_coupons.html" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Search</a>               
+                                        <a href="" name="" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Reset</a>                           
+                                    </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="">Start Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text" class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                        <label for="">End Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text" class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                            </div>
+                        </div>
+                    </form>
+                <div>
+                    <hr>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                                <th></th>
+                                <th>Coupon Name</th>
+                                <th>Coupon Code</th>
+                                <th>Student Name</th>
+                                <th>Student Email</th>
+                                <th>Used Date</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                                <th></th>
+                                <th>Coupon Name</th>
+                                <th>Coupon Code</th>
+                                <th>Student Name</th>
+                                <th>Student Email</th>
+                                <th>Used Date</th>
+                                </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr>
+                            <td><input type="hidden" name="data[User][id][]" id="DeleteCheckbox1_" value="0"/><input type="checkbox" name="data[User][id][]" value="1" id="DeleteCheckbox1" class="chkselect"/></td>
+                            <td></td>
+                            <td>1A44ahD</td>
+                            <td>Administrator</td>
+                            <td>admin</td>
+                            <td>Administrator</td>
+                            <td>root@localhost.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Jquery Core Js --> 
+
+{% endblock %}

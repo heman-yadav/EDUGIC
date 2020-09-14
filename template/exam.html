@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+<form method="post" action="multiple_delete_exam">
+    {% csrf_token %}
+
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Exam</h2>
+             </div>            
+             <div class="btn-group" style="margin-left: 15px;">
+                <a href="{% url 'add_exam' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Exam</a>
+{#                <a href="" name="" id="" data-toggle="modal" data-target="#largeModal1" class="btn btn-primary">&nbsp;View</a>                          #}
+{#                <a href="" name="" id="" data-toggle="modal" data-target="#largeModal" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Edit</a>               #}
+{#                <a href="{% url 'multiple_delete_exam' %}" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</a>#}
+            </div>
+            </div>
+
+            <div class="card" style="padding: 10px; margin-top: 15px;">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                    <thead>
+                        <tr>
+                        
+                        <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                        <th>Id</th>
+                        <th>Exam Name</th>
+                        <th>Start & End Date</th>
+                        <th>Group</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in addexam %}
+                        <tr>
+                            <td><input type="checkbox" name="selectAll" id="selectAll" value="{{ i.select_group }}"></td>
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ i.name_of_exam }}</td>
+                            <td>{{ i.start_date }} & {{ i.end_date }}</td>
+                            <td>{{ i.select_group }}</td>
+                            <td>{{ i.mode }}</td>
+                            <td><a href="{% url 'edit_exam' %}?select_group={{ i.select_group }} "  class="btn bg-blue waves-effect waves-light ">Edit</a>
+                            <td><a href="{% url 'view_exam' %}?select_group={{ i.select_group }} "  class="btn bg-blue waves-effect waves-light ">View</a>
+                                <a href="{% url 'delete_exam' %}?group={{ i.select_group }} "  class="btn bg-red waves-effect waves-light ">Delete</a></th>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </diV>
+        </div>
+    </div>
+</form>
+</section>
+
+<div class="modal fade" id="largeModal1" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="container">
+                    <div class="modal-header">
+                            <h4 class="title" id="largeModalLabel">View</h4>
+                        </div>
+                        <form>
+                            
+                            <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                            <a href="{% url 'exam' %}" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</a>
+                        </form>   
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

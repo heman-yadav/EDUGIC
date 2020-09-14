@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Update Exam
+                <small>Welcome to Edit Exam...</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="post" action="{% url 'update_exam' %}">
+                                {% csrf_token %}
+                                <div class="col-lg-6">
+                                    <label for="email_address">Package</label>
+                                    <select class="form-control show-tick" name="package">
+                                        {% if data.package == 'Demo Free Package' %}
+                                        <option>Demo Free Package</option>
+                                        {% else %}
+                                        <option>Demo Free Package</option>
+                                        {% endif %}
+                                        {% if data.subject_name == 'Demo PAID Package' %}
+                                        <option>Demo PAID Package</option>
+                                        {% else %}
+                                        <option>Demo PAID Package</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="email_address">Name of Exam</label>
+                                        <div class="form-group">                                
+                                            <input type="text" name="name_of_exam" id=""value="{{ data.name_of_exam}}" class="form-control" placeholder="Name of Exam">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="email_address">Passing Percentage</label>
+                                        <div class="input-group spinner" data-trigger="spinner">                                    
+                                            <input type="text" name="passing_percentage" value="{{ data.passing_percentage }}" class="form-control text-center" placeholder="Passing Percentage" data-rule="quantity">
+                                            <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="email_address">Instruction</label>
+                                    <div class="form-group">
+                                        <textarea type="text" name="instruction" class="form-control" placeholder="Instruction">{{ data.instruction }}</textarea>
+                                    </div>
+                                <label for="email_address">Syllabus</label>
+                                <div class="form-group">
+                                    <textarea type="text" name="syllabus" class="form-control" placeholder="Syllabus">{{ data.syllabus }}</textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="email_address">Exam Duration (Min.)</label>
+                                        <div class="input-group spinner" data-trigger="spinner">                                    
+                                            <input type="text" name="exam_duration" value="{{ data.exam_duration }}" class="form-control text-center" placeholder="0 for unlimited duration" data-rule="quantity">
+                                            <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                        </div>
+                                        <label for="">Start Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text" name="start_date" value="{{ data.start_date }}" class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                        <label for="email_address">Show Answer Sheet</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="show_answer_sheet"  id="" class="with-gap" value="{{ data.show_answer_sheet }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="show_answer_sheet" id="" class="with-gap" value="{{ data.show_answer_sheet }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Negative Marking</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="negative_marking" id="male" class="with-gap" value="{{ data.negative_marking }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="negative_marking" id="Female" class="with-gap" value="{{ data.negative_marking }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Browser Tolerance</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="browser_tolerance" id="male" class="with-gap" value="{{ data.browser_tolerance }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="browser_tolerance" id="Female" class="with-gap" value="{{ data.browser_tolerance }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Result After Finish</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="result_after_finish" id="male" class="with-gap" value="{{ data.result_after_finish }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="result_after_finish" id="Female" class="with-gap" value="{{ data.result_after_finish }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Instant Result</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="instant_result" id="male" class="with-gap" value="{{ data.instant_result }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="instant_result" id="Female" class="with-gap" value="{{ data.instant_result }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Multi Language</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="multi_languages" id="male" class="with-gap" value="{{ data.multi_languages }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="multi_languages" id="Female" class="with-gap" value="{{ data.multi_languages }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group" style="margin-left: 15px;">
+                                            <a href="" data-toggle="modal" data-target="#largeModal" class="btn btn-success">&nbsp;Add Subjects To Exams</a>                      
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="email_address">Attempt Count</label>
+                                        <div class="input-group spinner" data-trigger="spinner">                                    
+                                            <input type="text" name="attempt_count" value="{{ data.attempt_count }}" class="form-control text-center" placeholder="0 for unlimited duration" data-rule="quantity">
+                                            <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                        </div>
+                                        <label for="">End Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                            <input type="text" name="end_date" value="{{ data.end_date }}" class="form-control date" placeholder="Ex: 30/07/2016">
+                                        </div>
+                                        <label for="email_address">Select Group</label>
+                                        <select class="form-control show-tick" name="select_group">
+                                            {% if data.select_group == 'Demo Free Package' %}
+
+                                            <option>Demo Free Package</option>
+                                            {% else %}
+                                            <option>Demo Free Package</option>
+                                            {% endif %}
+                                            {% if data.select_group == 'Demo PAID Package' %}
+                                            <option>Demo PAID Package</option>
+                                            {% else %}
+                                            <option>Demo PAID Package</option>
+                                            {% endif %}
+                                            {% if data.select_group == 'Demo PAID Package' %}
+                                            <option>Demo PAID Package</option>
+                                            {% else %}
+                                            <option>Demo PAID Package</option>
+                                            {% endif %}
+                                        </select>
+                                        <label for="email_address">Random Question</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="random_question" id="male" class="with-gap" value="{{ data.random_question }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="random_question" id="Female" class="with-gap" value="{{ data.random_question }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Mode</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="mode" id="male" class="with-gap" value="{{ data.mode }}">
+                                                <label for="">Exam</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="mode" id="Female" class="with-gap" value="{{ data.mode }}" checked="">
+                                                <label for="">Preparation</label>
+                                            </div>
+                                        </div>
+                                        <label for="email_address">Option Shuffle</label>
+                                        <div class="form-group">
+                                            <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="option_shuffle" id="male" class="with-gap" value="{{ data.option_shuffle }}">
+                                                <label for="">Yes</label>
+                                            </div>                                
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="option_shuffle" id="Female" class="with-gap" value="{{ data.option_shuffle }}" checked="">
+                                                <label for="">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <tr>
+                                            <th><a href="">Subject Name</a></th>
+                                            <th><a href="">No. of Questions</a></th>
+                                            <th><a href="">Ques Attempt Count</a></th>
+                                            <th><a href="">Question Type</a></th>
+                                            <th><a href="">Difficulty Level</a></th>
+                                        </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>Physics</td>
+                                                <td>CPMT | IIT</td>
+                                                <td>CPMT | IIT</td>
+                                            </tr>
+                                                                            </table>
+                                </div>
+                                <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                            </form>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="container">
+                    <div class="modal-header">
+                            <h4 class="title" id="largeModalLabel">Add Subjects To Exams</h4>
+                        </div>
+                        <form>
+                                <label for="email_address">Subject:</label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select> 
+                                <label for="email_address">No. of Questions :</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="" class="form-control" placeholder="Passage ID if any">
+                                </div>
+                                <label for="email_address">Questions Attempt Count:</label>
+                                <div class="input-group spinner" data-trigger="spinner">                                    
+                                    <input type="text" class="form-control text-center" placeholder="0 for unlimited duration" data-rule="quantity">
+                                    <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                </div>
+                                <label for="email_address">Question Type :</label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select> 
+                                <label for="email_address">Difficulty Level  :</label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select> 
+                                <button type="submit" class="btn btn-default btn-round waves-effect">SAVE</button>
+                                <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                            </form>
+                        
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="../assets/plugins/jquery-spinner/js/jquery.spinner.js"></script> <!-- Jquery Spinner Plugin Js --> 
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+<script src="../assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js -->
+<script src="../assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Jquery Validation Plugin Css -->
+<script src="../assets/plugins/jquery-steps/jquery.steps.js"></script> <!-- JQuery Steps Plugin Js -->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
+<script src="assets/js/pages/forms/form-wizard.js"></script>
+</body>
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:45:30 GMT -->
+{#</html>#}
+{% endblock %}

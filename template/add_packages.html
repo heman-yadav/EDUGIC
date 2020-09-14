@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Add Packages
+                <small>Welcome to EDUGIC</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="post" action="{% url 'add_packages' %}" >
+                                {% csrf_token %}
+                                <label for="email_address">Type</label>
+                                <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                      <input type="radio" class="custom-control-input" onclick="enable()" id="defaultGroupExample1" name="type" name="paid" value="Paid">
+                                      <label class="custom-control-label" for="defaultGroupExample1">Paid</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                      <input type="radio" class="custom-control-input" onclick="disable()" id="defaultGroupExample2" name="type" checked name="free" value="Free">
+                                      <label class="custom-control-label" for="defaultGroupExample2">Free</label>
+                                    </div>
+                                    </div>
+                                <label for="email_address">Package Name</label>
+                                <div class="form-group">                                
+                                        <input type="text" id="" name="package_name" class="form-control" placeholder="Enter your package name">
+                                </div>
+                                <label for="email_address">Exam</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="" name="exam" class="form-control" placeholder="Enter your exam">
+                                </div>
+                                <label for="email_address">Amount</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="amount" name="amount" class="form-control" value="0" placeholder="Enter your amount" readonly>
+                                </div>
+                                <label for="password">Discount Amount</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="discount" name="discount_amount" class="form-control" value="0" placeholder="Enter your discount amount" readonly >
+                                </div>
+                                <label for="password">Expiry Days</label>
+                                <div class="form-group">                                
+                                        <input type="text" id="" name="expiry_days" class="form-control" placeholder="Enter your Expiry Days">
+                                </div>
+                                <label for="">Upload Photo</label>
+                                <div class="form-group">                                
+                                    <input type="file" id="" name="upload_photo" class="form-control">
+                                </div>
+                                <label for="">Description</label>
+                                <div class="form-group">                                
+                                    <textarea name="description" id="" cols="30" rows="3" class="form-control"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                                <a href="{% url 'packages' %}" class="btn btn-raised btn-primary btn-round waves-effect">Close</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<script>
+function disable(){
+    document.getElementById("amount").readOnly = true;
+    document.getElementById("discount").readOnly = true;
+}
+function enable(){
+    document.getElementById("amount").readOnly = false;
+    document.getElementById("discount").readOnly = false;
+}
+</script>
+{% endblock %}

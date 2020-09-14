@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Job Description
+                <small>Welcome to EDUGIC</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                           <form method="post" action="{% url 'add_job' %}">
+                                {% csrf_token %}
+
+                                <label for="email_address">Name of Post:</label>
+                                <div class="form-group">                                
+                                        <input type="text" id="" name="name_of_job" class="form-control" placeholder="Enter your Post ">
+                                </div>
+                                <label for="email_address">Post Date</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="" name="post_date" class="form-control" placeholder="Enter your Post Date">
+                                </div>
+                                <label for="email_address">Post Update date</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="" name="post_update_date" class="form-control" placeholder="Enter your Psot Update Date">
+                                </div>
+                                <label for="password">Short Information</label>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="short_information" placeholder="Enter Some Short Information"></textarea>
+                                </div>
+                                <label for="password">Basic Information</label>
+                                <div class="form-group">                                
+                                        <input type="textarea" name="about_exam" id="" class="form-control" placeholder="About Exam"><br>
+                                        <input type="textarea" id="" name="about_post" class="form-control" placeholder="About Post"><br>
+                                        <input type="textarea" id="" name="notification" class="form-control" placeholder="Notification">
+                                 </div>
+                                <label for="password">Importants Dates</label>
+                                <div class="form-group">                                
+                                        <input type="textarea" id=""  class="form-control" name="importants_dates" placeholder="Important Dates">
+                                 </div>
+                                 <label for="password">Application Fee</label>
+                                <div class="form-group">                                
+                                        <input type="textarea" id="" class="form-control" name="application_fee" placeholder="Application Fee">
+                                 </div>
+                                <label for="password">Vacancy Details</label>
+                                <div class="form-group">   
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group"> 
+                                            <input type="textarea" id="" name="v_entry_type" class="form-control" placeholder="Entry Type">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="textarea" id="" name="v_branch_name" class="form-control" placeholder="Branch name">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="textarea" id="" name="v_age_limit" class="form-control" placeholder="Age Limit">
+                                        </div>
+                                    </div>    
+                                    <label for="password">Eligibilty</label>
+                                    <div class="col-lg-12"></div>
+                                            <input type="textarea" id="" name="v_eligibility" class="form-control" placeholder="Eligibilty">
+                                        </div>
+                                        <div id="print"></div>
+                                        
+
+
+                                 <div class="form-group">   
+                                    <label for="password">Ground Duty Non Technical Eligibility Details</label>
+                                     <div class="row">
+                                         <div class="col-lg-6">
+                                             <div class="form-group"> 
+                                             <input type="textarea" name="entry_type" id="" class="form-control" placeholder="Entry Type">
+                                             </div>
+                                         </div>
+                                         <div class="col-lg-6">
+                                             <input type="textarea" name="branch_name" id="" class="form-control" placeholder="Branch name">
+                                         </div>
+                                         <div class="col-lg-6">
+                                             <input type="textarea" id="" name="age_limit" class="form-control" placeholder="Age Limit">
+                                         </div>
+                                         <div class="col-lg-6">
+                                             <input type="textarea" id="" name="eligibility" class="form-control" placeholder="Eligibilty">
+                                         </div>
+                                         <div class="col-lg-12">
+                                             <div id="newElementId"></div>
+                                         </div>
+                                     </div>
+                                     <div id="dynamicCheck">
+                                            <p class="btn btn-raised btn-primary btn-round waves-effect" type="button" value="Add More" onclick="createNewElement();">Add More</p>
+                                        </div>
+                                     <label for="password">Note</label>
+                                <div class="form-group">                                
+                                        <input type="textarea" id="" name="note" class="form-control" placeholder="Enrolled Candidate Can Download Admit Card.">
+                                 </div>
+                                 <label for="password">Some Useful Important Links</label>
+                                 <div class="form-group">   
+                                     <div class="row">
+                                         <div class="col-lg-6">
+                                             <div class="form-group"> 
+                                             <input type="textarea" id="" name="Some_Useful_Important_Links" class="form-control" placeholder="Download Admit Card">
+                                             </div>
+                                         </div>
+                                         <div class="col-lg-6">
+                                             <input type="textarea" id="" name="apply_online" class="form-control" placeholder="Apply Online">
+                                         </div>
+                                         <div class="col-lg-6">
+                                             <input type="textarea" id="" name="download_notification" class="form-control" placeholder="Download Notification">
+                                         </div>
+                                         <div class="col-lg-6">
+                                             <input type="textarea" id="" name="official_website" class="form-control" placeholder="Official Website">
+                                         </div>
+                                     </div> 
+                                     <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                                     <button type="reset" class="btn btn-raised btn-primary btn-round waves-effect">Close</button>
+                                  </div>
+                                
+                                                               
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+
+<script>
+    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor2');
+    CKEDITOR.replace('editor3');
+    CKEDITOR.replace('editor4');
+</script>
+
+ <script>
+    function add() {
+    var new_chq_no = parseInt($('#total_chq').val()) + 1;
+    var new_input = "<input type='text' id='new_" + new_chq_no + "'>";
+     $('#new_chq').html(new_input);
+                       }
+</script>
+
+<script>
+    function add1() {
+      var txt1 = "<p>Text.</p>";        // Create text with HTML
+      var txt2 = $("<p></p>").text("Text.");  // Create text with jQuery
+      var txt3 = document.createElement("p");
+      txt3.innerHTML = "Text.";         // Create text with DOM
+      $("body").append(txt1, txt2, txt3);   // Append new elements
+    }
+    </script>
+<script>
+    function add123() {
+       
+
+      var txt1 = "<p>Text.</p>";        // Create text with HTML
+      txt3.innerHTML = "Text.";         // Create text with DOM
+      $("body").add(txt1,);   // Append new elements
+}
+    </script>
+
+    <script type="text/JavaScript">
+function createNewElement() {
+    // First create a DIV element.
+	var txtNewInputBox = document.createElement('div');
+
+    // Then add the content (a new input box) of the element.
+	txtNewInputBox.innerHTML = "<div class=\"row\">\n" +
+        "                                         <div class=\"col-lg-6\">\n<br>" +
+        "                                             <div class=\"form-group\"> \n" +
+        "                                             <input type=\"textarea\" name=\"entry_type\" id=\"\" class=\"form-control\" placeholder=\"Entry Type\">\n" +
+        "                                             </div>\n" +
+        "                                         </div>\n" +
+        "                                         <div class=\"col-lg-6\">\n<br>" +
+        "                                             <input type=\"textarea\" name=\"branch_name\" id=\"\" class=\"form-control\" placeholder=\"Branch name\">\n" +
+        "                                         </div>\n" +
+        "                                         <div class=\"col-lg-6\">\n" +
+        "                                             <input type=\"textarea\" id=\"\" name=\"age_limit\" class=\"form-control\" placeholder=\"Age Limit\">\n" +
+        "                                         </div>\n" +
+        "                                         <div class=\"col-lg-6\">\n" +
+        "                                             <input type=\"textarea\" id=\"\" name=\"eligibility\" class=\"form-control\" placeholder=\"Eligibilty\">\n" +
+        "                                         </div>\n" +
+        "                                     </div>";
+
+    // Finally put it where it is supposed to appear.
+	document.getElementById("newElementId").appendChild(txtNewInputBox);
+}
+</script>
+</body>
+
+
+{#</html>#}
+{% endblock %}
+
+

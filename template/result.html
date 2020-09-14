@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Result<h2></h2>
+                <small>Welcome to EDUGIC</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <h4>Exam Wise</h4>
+                            <form>
+                                <label for="email_address">Group</label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select> 
+                                <label for="email_address">Name of Exam</label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select> 
+                                <label for="email_address">Status of Result </label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <button type="button" class="btn btn-raised btn-primary btn-round waves-effect">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <h4>Student Wise</h4>
+                            <form>
+                                <label for="email_address">Name or Enrolment Number</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="" class="form-control" placeholder="Enter your Enrolment Number">
+                                </div>
+                                <label for="email_address">Group</label>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select> 
+                                
+                                <button type="button" class="btn btn-raised btn-primary btn-round waves-effect">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js --> 
+
+
+
+{% endblock %}

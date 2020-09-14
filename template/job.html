@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<section class="content home">
+<form method="post" >
+                {% csrf_token %}
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Job</h2>
+             </div>
+
+             <div class="btn-group" style="margin-left: 15px;">
+
+                <a href="{% url 'add_job' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Job</a>
+{#                <a href="" name="" data-toggle="modal" data-target="#largeModal" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Views</a>#}
+                <button type="submit" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</button>
+            </div>
+
+            </div>
+    <div class="container-fluid">       
+        <!-- Basic Validation -->
+        <div class="row clearfix">
+            <div class="col-lg-4">
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Result
+                    </div>
+                           {% for i in job %}
+
+                        <li>
+                         <a href="{% url 'job_details' %}?name_of_job={{ i.name_of_job }}">{{ i.name_of_job }}</a>
+
+                        </li><br>
+                        {% endfor %}
+
+
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More </a></button>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+               
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Admit Card
+                    </div>
+                            {% for i in job %}
+
+                        <li>
+                         <a href="{% url 'job_details' %}?name_of_job={{ i.name_of_job }}">{{ i.name_of_job }}</a>
+
+                        </li><br>
+                        {% endfor %}
+
+                        </li>
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div>
+
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Latest Jobs
+
+                    </div>
+                         {% for i in job %}
+
+                        <li>
+                         <a href="{% url 'job_details' %}?name_of_job={{ i.name_of_job }}">{{ i.name_of_job }}</a>
+
+                        </li><br>
+                        {% endfor %}
+
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Answer Key
+                    </div>
+                        <li>
+                            MPPSC Pre Final Answer Key 2020
+                        </li><br>
+                        <li>
+                            CBSE Various Post Answer Key
+                        </li><br>
+                        <li>
+                            BPSC Assistant Mains Answer Key
+
+                        </li><br>
+                        <li>
+                            UPTET Revised Answer Key 2020
+                        </li><br>
+                        <li>
+                            Allahabad High Court Review Officer, CA Answer Key 2020
+                        </li><br>
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Syllabus
+                    </div>
+                        <li>
+                            RPSC Librarian Syllabus 2019
+                        </li><br>  
+                        <li>
+                            UPSSSC Forest / Wildlife Guard Syllabus 2019
+                        </li><br>  
+                        <li>
+                            UPSSSC Combined Technical Recruitment 2016 Syllabus
+                        </li><br>  
+                        <li>
+                            SSC Stenographer Syllabus 2019
+                        </li><br>  
+                        <li>
+                            UPSSSC Computer Operator Exam Syllabus 2019
+                        </li>
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button> 
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Admission
+                    </div>
+                        <li>
+                            NTA JEEMAIN Phase II April 2020 Online Form
+                        </li><br>  
+                        <li>
+                            Bihar B.Ed CET Online Form 2020
+                        </li><br>  
+                        <li>
+                            BHU UET 2020 Online Form
+                        </li><br>  
+                        <li>
+                            BHU PET 2020 Online Form
+                        </li><br>  
+                        <li>
+                            BITSAT 2020 Online Form
+                        </li><br>  
+                        <li>
+                            MMM Gorakhpur MET Online Form 2020
+                        </li>
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button>  
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                        Important
+                    </div>
+                        <li>
+                            UP Scholarship Online Form 2019
+                        </li><br>  
+                        <li>
+                            MP Rojgar Panjiyan Online Form
+                        </li><br>  
+                        <li>
+                            UP Bar Declaration Online Form
+                        </li><br>  
+                        <li>
+                            UP Ration Card New List, Find Rashon Card 2017
+                        </li><br>  
+                        <li>
+                            CCC Result, Admit Card,Certificate, Online Form
+                        </li>
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <ul style="border: 1px solid;
+                    color: black;">
+                    <div style="text-align: center;color: aliceblue;margin-left: -40px;background-color: brown;">
+                         Certificate Verification
+                    </div>
+                        <li>
+                            Pan Card Online Form 2020
+                        </li><br>  
+                        <li>
+                            Voter ID Online Form 2020
+                        </li><br>  
+                        <li>
+                            Aadhar Card Download, Correction, Status
+                        </li><br>  
+                        <li>
+                            UP Khasra Khatauni Online Check
+                        </li>
+                        <button type="button" style="margin-left: 199px;"><a href="Job_details.html">View More</a></button>     
+                    </ul>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+        <!-- #END# Basic Validation --> 
+        <!-- Advanced Validation -->
+       
+        <!-- #END# Validation Stats --> 
+    </div>
+</section>
+
+<!-- Jquery Core Js --> 
+<script src="static/assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="static/assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+
+<script src="static/new/assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Jquery Validation Plugin Css --> 
+<script src="static/new/assets/plugins/jquery-steps/jquery.steps.js"></script> <!-- JQuery Steps Plugin Js --> 
+
+<script src="static/assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="static/assets/js/pages/forms/form-validation.js"></script> 
+<script src="static/datatables/datatables/jquery.dataTables.min.js"></script>
+<script src="static/datatables/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/datatables-demo.js"></script>
+</body>
+
+{#</html>#}
+{% endblock %}

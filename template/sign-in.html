@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html class="no-js " lang="en">
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:48:03 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="description" content="EDUGIC Bootstrap 4 Admin Dashboard with ui kit.">
+
+
+<!-- Favicon-->
+<link rel="icon" href="logo.ico" type="image/x-icon">
+<link rel="stylesheet" href="{% static 'new/assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+
+<!-- Custom Css -->
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">    
+<link rel="stylesheet" href="{% static 'assets/css/color_skins.css' %}">
+
+<style>
+    .eye {
+        float: right;
+        margin-left: -25px;
+        margin-top: -25px;
+        position: relative;
+        z-index: 2;
+    }
+        
+        
+        </style>
+</head>
+<body class="theme-cyan">
+<div class="authentication sidebar-collapse">
+    <!-- Navbar -->
+    
+    <!-- End Navbar -->
+    <div class="page-header">
+        <div class="container" style="z-index: 2; background-color: rgba(255, 255, 255, 0.253) !important;top:0;left: 0 !important;right: 0 !important;bottom: 0; border:none; margin:0px !important;width:100% !important; max-width:1800px;">
+                    <div class="col-md-12 content-center">
+                <div class="card-plain">
+                    <form class="form" method="post" action="{% url 'sign_in' %}">
+                        {% csrf_token %}
+                        <div class="header">
+                            <div class="logo-container expandUp">
+                                <img src="{% static 'new/assets/images/edugic.png' %}" width="80" alt="Zucol Services">
+                            </div>
+                            <h5>Log In</h5>
+                        </div>
+                        <div class="content">                                                
+                            <div class="input-group">
+                                    <span class="input-group-addon">
+                                            <i class="zmdi zmdi-account-circle"></i>
+                                        </span>
+                                <input type="text" name="username" class="form-control" placeholder="Enter User Name">
+                                
+                            </div>
+                            <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+                                    <input type="password" name="password" placeholder="Re-enter New Password" class="form-control abc" id="pass" style="border-right:0px;border-left:0px;"/>
+                                    <span class="input-group-addon" ><i class="zmdi zmdi-eye-off " onclick="myfunction()" id="pass1"></i></span>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block ">SIGN IN</button>
+{#                            <a href="{% url 'index' %}" class="btn btn-primary btn-round btn-lg btn-block ">SIGN IN</a>#}
+                            <h5><a href="forgot-password.html" class="link">Forgot Password?</a></h5>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!-- Jquery Core Js -->
+<script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script>
+<script src="{% static 'assets/bundles/vendorscripts.bundle.js' %}"></script> <!-- Lib Scripts Plugin Js -->
+<script src="{% static 'assets/js/pages/authentication/page.js' %}"></script>
+<script type="text/javascript">
+function myfunction() {
+
+var x = document.getElementById("pass");
+
+
+if (x.type === "password") {
+  x.type = "text";
+document.getElementById("pass1").className="zmdi zmdi-eye";
+} else {
+  x.type = "password";
+  
+document.getElementById("pass1").className="zmdi zmdi-eye-off";
+}
+}
+</script>
+
+</body>
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:48:04 GMT -->
+</html>

@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>View Question
+                <small>Welcome to View Page...</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="POST" action="{% url 'update_question' %}">
+                                {% csrf_token %}
+                                <label>Passage ID</label>
+                                <div class="form-group">                                
+                                    <input type="text" value="{{ data.passage_id }}" name="passage_id" id="" class="form-control" placeholder="Passage ID if any">
+                                </div>
+                                <label for="email_address">Question Type</label>
+                                <div class="form-group">
+                                        <div class="radio inlineblock m-r-20">
+                                            <input type="radio" name="question_type" id="objective" class="with-gap" value="Objective">
+                                            <label for="objective">Objective</label>
+                                        </div>
+                                        <div class="radio inlineblock">
+                                            <input type="radio" name="question_type" id="t_F" class="with-gap" value="True / False">
+                                            <label for="t_F">True / False</label>
+                                        </div>
+                                        <div class="radio inlineblock m-r-20">
+                                                <input type="radio" name="question_type" id="fill_blanks" class="with-gap" value="Fill in the blanks">
+                                                <label for="fill_blanks">Fill in the blanks</label>
+                                            </div>
+                                            <div class="radio inlineblock">
+                                                <input type="radio" name="question_type" id="subjective" class="with-gap" value="Subjective">
+                                                <label for="subjective">Subjective</label>
+                                            </div>
+                                    </div>
+                                    <div class="body">
+                                        <div id="wizard_horizontal">
+                                            <h2>Question</h2>
+                                            <section>
+                                                <textarea type="text" name="question" id="" class="form-control" placeholder="Type your question">{{ data.question }}</textarea>
+                                            </section>
+                                            <h2>Option 1</h2>
+                                            <section>
+                                                <textarea type="text" id="" name="option1" class="form-control" placeholder="Option 1">{{ data.option1 }}</textarea>
+                                            </section>
+                                            <h2>Option 2</h2>
+                                            <section>
+                                                <textarea type="text" id="" name="option2" class="form-control" placeholder="Option 2">{{ data.option2 }}</textarea>
+                                            </section>
+                                            <h2>Option 3</h2>
+                                            <section>
+                                                <textarea type="text" id="" name="option3" class="form-control" placeholder="Option 3">{{ data.option3 }}</textarea>
+                                            </section>
+                                            <h2>Option 4</h2>
+                                            <section>
+                                                <textarea type="text" id="" name="option4" class="form-control" placeholder="Option 4">{{ data.option4 }}</textarea>
+                                            </section>
+                                            <h2>Answers</h2>
+                                            <section>
+                                                <textarea type="text" id="" name="answer" class="form-control" placeholder="Answers">{{ data.answer }}</textarea>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <label for="email_address">True / False</label>
+                                    <div class="form-group">
+                                        <div class="radio inlineblock m-r-20">
+                                            <input type="radio" name="true_false" id="true" class="with-gap" value="T">
+                                            {% if data.true_false1 == 'True' %}
+                                            <label for="true">True</label>
+                                           {% else %}
+                                            <label for="true">True</label>
+
+                                           {% endif %}
+                                        </div>                                
+                                        <div class="radio inlineblock">
+                                            <input type="radio" name="true_false" id="false" class="with-gap" value="F">
+                                            {% if data.true_false1 == 'Flase' %}
+                                            <label for="false">False</label>
+                                            {% else %}
+                                            <label for="false">False</label>
+                                            {% endif %}
+
+
+                                        </div>
+                                    </div>
+                                    <label for="email_address">Blank Space</label>
+                                    <div class="form-group">                                
+                                        <textarea type="text" id="" value="{{ data.black_space }} name="black_space" class="form-control" placeholder="Enter your Blank Space"></textarea>
+                                    </div>
+                                    <label for="email_address">Explanation (Optional)</label>
+                                    <div class="form-group">                                
+                                        <textarea type="text" id="" name="explanation" class="form-control" placeholder="Provide explanation in support of correct answer">{{ data.explanation }}</textarea>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Group</label>
+                                                <select class="form-control show-tick" name="group">
+                                                    {% if data.group == 'Ketchup' %}
+                                                    <option>Ketchup</option>
+                                                    {% else %}
+                                                    <option>Ketchup</option>
+                                                    {% endif %}
+                                                    {% if data.group == 'Relish' %}
+                                                    <option>Relish</option>
+                                                    {% else %}
+                                                    <option>Relish</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Topics</label>
+                                                <select class="form-control show-tick" name="topics">
+                                                    {% if data.topics == 'Ketchup' %}
+                                                    <option selected>Ketchup</option>
+                                                    {% else %}
+                                                    <option>Ketchup</option>
+                                                    {% endif %}
+                                                    {% if data.topics == 'Relish' %}
+                                                    <option selected>Relish</option>
+                                                    {% else %}
+
+                                                    <option>Relish</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Subject</label>
+                                                <select class="form-control show-tick" name="subject">
+                                                    {% if data.subject == 'Ketchup' %}
+                                                    <option>Ketchup</option>
+                                                    {% else %}
+                                                    <option>Ketchup</option>
+                                                    {% endif %}
+                                                    {% if data.subject == 'Relish' %}
+                                                    <option>Relish</option>
+                                                    {% else %}
+                                                    <option>Relish</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            <div style="margin-bottom: 12px;">
+                                                <label for="">Sub Topics</label>
+                                                <select class="form-control show-tick" name="sub_topics">
+                                                    {% if data.subject == 'Ketchup' %}
+                                                    <option selected>Ketchup</option>
+                                                    {% else %}
+                                                    <option>Ketchup</option>
+                                                    {% endif %}
+                                                    {% if data.subject == 'Relish' %}
+
+                                                    <option selected>Relish</option>
+                                                    {% else %}
+                                                    <option selected>Relish</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            </div>
+                                    </div>
+
+                                    <label for="">Hint (Optional)</label>
+                                <div class="form-group">                                
+                                    <input type="text" id="" value="{{ data.hint }}" name="hint" class="form-control" placeholder="Passage ID if any">
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-4">
+                                        <label for="">Marks</label>
+                                        <div class="input-group spinner" data-trigger="spinner">                                    
+                                            <input type="text" name="marks" value="{{ data.marks }}" class="form-control text-center" placeholder="Marks" data-rule="quantity">
+                                            <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                            <label for="">Negative Marks</label>
+                                            <div class="input-group spinner" data-trigger="spinner">                                    
+                                                <input type="text" value="{{ data.negative_marks }}" name="negative_marks" class="form-control text-center" placeholder="without minus sign" data-rule="quantity">
+                                                <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                            </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="">Difficulty Level</label>
+                                          <select class="form-control show-tick" name="difficult_level">
+                                                    {% if data.subject == 'Ketchup' %}
+                                                    <option>Ketchup</option>
+                                                    {% else %}
+                                                    <option>Ketchup</option>
+                                                    {% endif %}
+                                                    {% if data.subject == 'Relish' %}
+                                                    <option>Relish</option>
+                                                    {% else %}
+                                                    <option>Relish</option>
+                                                    {% endif %}
+                                                </select>
+                                    </div>
+                                </div>
+{#                               <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>#}
+{#                               <a href="{% url 'questions' %}" class="btn btn-raised btn-primary btn-round waves-effect">Close</a>#}
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

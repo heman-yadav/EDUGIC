@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+<form method="post" action="{% url 'multiple_delete_student' %}">
+    {% csrf_token %}
+
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Student</h2>
+             </div>            
+             <div class="btn-group" style="margin-left: 15px;">
+                <a href="{% url 'add_student' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Student</a>
+{#                <a href=" "  class="btn bg-blue waves-effect waves-light ">view</a>#}
+{#                <a href="" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</a>#}
+            </div>
+            </div>
+            <div class="table-responsive">
+
+                
+
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                        <th><a href="" id="link-1553905608">Id</a></th>
+                        <th><a href="" id="link-2069369211">Email</a></th>
+                        <th><a href="" id="link-773468526">Name</a></th>
+                        <th><a href="" class="asc" id="link-486357308">Phone</a></th>
+                        <th><a href="" id="link-1196299065">Group</a></th>
+                        <th><a href="" id="link-2124707785">Admission Date</a></th>
+                        <th><a href="" id="link-1808963352">Status</a></th>
+                        <th><a href="" id="link-1808963352">Action</a></th>
+                    </tr>
+                        {% for i in data %}
+                    <tr>
+
+                            <td><input type="checkbox" name="selectAll" id="slectAll" value="{{ i.id }}"/></td>
+                            <td>{{ forloop.counter }}</td>
+                            <td hidden>{{ i.id }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.group }}</td>
+                            <td>{{ i.admission_date }}</td>
+                            <td>{{ i.status }}</td>
+                        <td><a href="{% url 'edit_student' %}?id={{ i.id }} "  class="btn bg-blue waves-effect waves-light ">Edit</a>
+                        <a href="{% url 'view_student' %}?id={{ i.id }} "  class="btn bg-blue waves-effect waves-light ">View</a>
+                            <a href="{% url 'delete_student' %}?id={{ i.id }} "  class="btn bg-red waves-effect waves-light ">Delete</a></td>
+
+                        </tr>
+                    {% endfor %}
+                    </table>
+            </div>
+        </div>
+    </div>
+</form>
+</section>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="container">
+                    <div class="modal-header">
+                            <h4 class="title" id="largeModalLabel">Edit</h4>
+                        </div>
+{#                        <form method="post" action="{% url 'view_student' %}">#}
+                            {% csrf_token %}
+
+                            <div class="row">
+                                 <div class="col-lg-6">
+
+                                         <label for="">Email</label>
+                                         <div class="form-group">
+                                             <input type="text" id="" value="{{ edst.email }}" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Name</label>
+                                         <div class="form-group">
+                                                 <input type="text" id="" value="{{ edst.name }}" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Address</label>
+                                         <div class="form-group">
+                                             <input type="text" id="" value="{{ edst.address }}" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Alternate Number</label>
+                                         <div class="form-group">
+                                                 <input type="text" id="" value="{{ edst.alternate }}" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Admission Date</label>
+                                         <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="zmdi zmdi-calendar"></i>
+                                            </span>
+                                            <input type="text" value="{{ edst.admission_date }}" class="form-control datetimepicker" placeholder="Please choose date & time...">
+                                        </div>
+                                         <label for="">Expiry Days</label>
+                                         <div class="form-group">
+                                                 <input type="text" value="{{ edst.expiry_date }}" id="" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Upload Photo</label>
+                                         <div class="form-group">
+                                                 <input type="file" value="{{ edst.upload_photo }}" name="myFile">
+                                         </div>
+
+                                 </div>
+                                 <div class="col-lg-6">
+                                     <label for="email_address">Group</label>
+                                     <select class="form-control show-tick">
+                                         <option>Mustard</option>
+                                         <option>Ketchup</option>
+                                         <option>Relish</option>
+                                     </select>
+                                     <label for="">Password</label>
+                                         <div class="form-group">
+                                             <input type="text" value="{{ edst.password }}" id="" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Phone</label>
+                                         <div class="form-group">
+                                                 <input type="text" id="" value="{{ edst.phone }}" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="">Enrolment Number</label>
+                                         <div class="form-group">
+                                             <input type="text" id="" value="{{ edst.enrollment_number }}" class="form-control" placeholder="">
+                                         </div>
+                                         <label for="email_address">Status</label>
+                                     <select class="form-control show-tick">
+                                         <option>Active</option>
+                                         <option>Pending</option>
+                                         <option>Suspend</option>
+                                     </select>
+                                 </div>
+                                 <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                                 <button type="reset" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                            </div>
+                        </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jquery Core Js -->
+
+
+
+
+{% endblock %}

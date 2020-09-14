@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+
+
+<section class="content">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Details</h2>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Details</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <table width="100%" align="center" />
+                <tr valign="top" />
+                    <td>
+                    <h2><table align="center" style="margin-left:10px" />
+                    <tr>
+                    <td valign="top" align="left" style=" color:#FF0033; font-size: 15px;">Name of Post: </td>
+                    <td valign="top" align="left" style=" font-size: 15px;">{{ data.name_of_job }}</td>
+                    </tr>
+                    <tr>
+                    <td valign="top" align="left" style="color:#FF0033; font-size: 15px;">Post Date :</td>
+                    <td valign="top" align="left" style=" font-size: 15px;">{{ data.post_date }}</td>
+                    </tr>
+                    <tr>
+                    <td valign="top" align="left" style=" color:#FF0033; font-size: 15px;">Post Update Date :</td>
+                    <td valign="top" align="left" style=" font-size: 15px;">{{ data.post_update_date }}</td>
+                    </tr>
+                    <tr>
+                    <td valign="top" align="left" style=" color:#FF0033; font-size:15px;">Short Information : </td>
+                    <td valign="top" align="left" style=" font-size: 15px;">{{ data.short_information }}<br></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container-fluid">       
+        <!-- Basic Validation -->
+        
+ <div>
+        <table border="1" cellspacing="0" cellpadding="0" style="margin-left: auto; margin-right: auto;">
+            <tbody>
+
+            <tr>
+            <td colspan="8" valign="top" name="name_of_job" width="638" style="font-size: 20px;">
+                <p align="center"><span style="color: #ff00ff;"><b>{{ data.name_of_job }}</b></span></p>
+            <p align="center"><span style="color: #008000;"><b>{{ data.about_post }} January 2021)</b></span></p>
+            <p align="center"><span style="color: #ff00ff;"><b>{{ data.notification }}Short Details of Notification</b></span></p>
+            <p align="center"><span style="color: #ff0000;"><a href="#"><span style="color: #ff0000;"><b></b></span></a></span></p>
+            </td>
+            </tr>
+
+            <tr>
+            <td colspan="6" valign="top" width="328" style="font-size: 20px;">
+            <p align="center"><span style="color: #008000;"><b>IMPORTANT DATES</b></span></p>
+            <ul>
+            <li><strong>{{ data.importants_dates }}</strong></li>
+
+            </ul>
+            </td>
+            <td colspan="2" valign="top" width="311" style="font-size: 20px;">
+            <p align="center"><span style="color: #008000;"><b>Application Fee</b></span></p>
+            <ul>
+            <li> <b>{{ data.application_fee }}</b></li>
+
+            </ul>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="8" valign="top" width="638" style="font-size: 20px;">
+            <p align="center"><span style="color: #008000;"><b>Vacancy Details | Age Limit as on <span style="color: #ff00ff;"></span></b></span></p>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td valign="top" width="85">
+            <p align="center"><b>Entry Type</b></p>
+            </td>
+            <td valign="top" width="106">
+            <p align="center"><b>Branch name</b></p>
+            </td>
+            <td colspan="2" valign="top" width="90">
+            <p align="center"><b>Age Limit</b></p>
+            </td>
+            <td colspan="4" valign="top" width="358">
+            <p align="center"><b>Eligibility</b></p>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td valign="top" width="85">
+            <p align="center">{{ data.v_entry_type }}</p>
+            </td>
+            <td valign="top" width="106">
+            <p align="center">{{ data.v_branch_name }}</p>
+            </td>
+            <td colspan="2" valign="top" width="90">
+            <p align="center">{{ data.age_limit }}</p>
+            </td>
+            <td colspan="4" valign="top" width="358">
+            <ul>
+            <li>{{ data.v_eligibility }}</li>
+            </ul>
+            </td>
+            </tr>
+            <tr>
+            <td rowspan="6" valign="top" width="85"></td>
+            <td valign="top" width="106" style="font-size: 20px;" >
+            <p align="center">Ground Duty Technical</p>
+            </td>
+            <td colspan="2" valign="top" width="90" style="font-size: 20px;">
+            <p align="center">20-26 Age Between 02/01/1995 to 01/01/21</p>
+            </td>
+            <td colspan="4" valign="top" width="358" style="font-size: 20px;">
+            <ul>
+            <li><b>Aeronautical Engineering Electronics :</b> 10+2 Intermediate Minimum 60% Marks in Physics and Math and Minimum 4 Year Graduation / Integrated PG Degree in Engineering / Technology</li>
+            <li><b>Aeronautical Engineering Mechanical :</b> Candidates with Minimum 60% Marks Each in Physics and Mathematics at 10+2 Level and 4 Year Engineering / Technology Degree in Mechanical Engineering, Industrial Engineering, Aeronautical Engineering or Equivalent Degree</li>
+            </ul>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="7" valign="top" width="554" style="font-size: 20px;" >
+            <h3 align="center"><span style="color: #008000; font-size: 26px;"><b>Ground Duty Non Technical Eligibility Details</b></span></h3>
+            </td>
+            </tr>
+            <tr>
+            <td valign="top" width="106" style="font-size: 20px;">
+            <p align="center">Administration and Logistics</p>
+            </td>
+            <td colspan="2" valign="top" width="90" style="font-size: 20px;">
+            <p align="center">20-26</p>
+            </td>
+            <td colspan="4" valign="top" width="358" style="font-size: 20px;">
+            <ul >
+            <li>Bachelor Degree in Any Stream with at Least Minimum 60% Marks</li>
+            <li><b>Physical Eligibility</b></li>
+            <li>Height Male : 157.5 CMS | Female : 152 CM</li>
+            </ul>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td valign="top" width="106" >
+            <p align="center">Accounts</p>
+            </td>
+            <td colspan="2" valign="top" width="90">
+            <p align="center">20-26</p>
+            </td>
+            <td colspan="4" valign="top" width="358">
+            <ul>
+            <li>Bachelor Degree in Commerce B.Com with at Least Minimum 60% Marks <b></b></li>
+            <li><strong>Physical Eligibility</strong></li>
+            <li>Height Male : 157.5 CMS | Female : 152 CMS</li>
+            </ul>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td valign="top" width="106" style="font-size: 20px;">
+            <p align="center">Education</p>
+            </td>
+            <td colspan="2" valign="top" width="90">
+            <p align="center">20-26</p>
+            </td>
+            <td colspan="4" valign="top" width="358">
+            <ul style="font-size: 20px;">
+            <li>MBA / MCA / MA / M.Sc Degree at Least Minimum 50% Marks <b></b></li>
+            <li><strong>Physical Eligibility</strong></li>
+            <li><strong>Height Male : 157.5 CMS | Female : 152 CMS</strong></li>
+            </ul>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td valign="top" width="106" style="font-size: 20px;">
+            <p align="center">Meteorology</p>
+            </td>
+            <td colspan="2" valign="top" width="90">
+            <p align="center">20-26</p>
+            </td>
+            <td colspan="4" valign="top" width="358">
+            <ul style="font-size: 20px;">
+            <li>Master Degree in Any Stream in Any Recognized University in India.</li>
+            </ul>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td valign="top" width="85">
+            <p align="center">NCC Special Entry</p>
+            </td>
+            <td valign="top" width="106">
+            <p align="center">Flying</p>
+            </td>
+            <td colspan="2" valign="top" width="90">
+            <p align="center">20-24</p>
+            </td>
+            <td colspan="4" valign="top" width="358">
+            <ul>
+            <li>NCC Air Wing Senior Division ’C’ certificate and Other Details as per Flying Branch Eligibility</li>
+            </ul>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="8" valign="top" width="638"style="font-size: 20px;">
+            <p align="center"><span style="color: #ff00ff;"><b>Enrolled Candidate Can Download Admit Card.</b></span></p>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="8" valign="top" width="638">
+            <center> <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="e35dc795b7f94f3e8e46004b-text/javascript"></script>
+            
+            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9222595088627935" data-ad-slot="1698571817"></ins>
+            <script type="e35dc795b7f94f3e8e46004b-text/javascript">
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script></center>
+            <p align="center" style="font-size: 30px;"><span style="color: #008000;"><b>Download Mobile Apps for Latest Updates</b></span></p>
+            </td>
+            </tr>
+            <tr style="font-size: 20px;">
+            <td colspan="3" valign="top" width="219">
+            <p align="center"><a href="#" target="_blank"><b>Android Apps</b></a></p>
+            </td>
+            <td colspan="4" valign="top" width="198">
+            <p align="center"><a href="#" target="_blank"><b>Apple IOS Apps</b></a></p>
+            </td>
+            <td valign="top" width="221">
+            <p align="center"><a href="#" target="_blank"><b>Window Apps</b></a></p>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="8" valign="top" width="638">
+            <h1 align="center"><span style="color: #008000;font-size: 30px;"><b>Some Useful Important Links</b></span></h1>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="5" valign="top" width="319">
+            <h1 align="center"><span style="color: #ff00ff;font-size: 20px;"><b>Download Admit Card</b></span></h1>
+            </td>
+            <td colspan="3" valign="top" width="319">
+            <h1 align="center"><b><span style="color: #008000;font-size: 20px;"><a href="#" target="_blank">Click Here</a></span></b></h1>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="5" valign="top" width="319">
+            <h1 align="center"><span style="color: #ff00ff;font-size: 20px;"><b>Apply Online</b></span></h1>
+            </td>
+            <td colspan="3" valign="top" width="319">
+            <h1 align="center"><b><span style="color: #008000;font-size: 20px;"><a href="#" target="_blank">Click Here</a></span></b></h1>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="5" valign="top" width="319">
+            <h1 align="center"><span style="color: #ff00ff;font-size: 20px;"><b>Download Notification</b></span></h1>
+            </td>
+            <td colspan="3" valign="top" width="319">
+            <h1 align="center"><a href="#" target="_blank" style="font-size: 20px;"><b>Click Here</b></a></h1>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="5" valign="top" width="319">
+            <h1 align="center"><span style="color: #ff00ff;font-size: 20px;"><b>Official Website</b></span></h1>
+            </td>
+            <td colspan="3" valign="top" width="319">
+            <h1 align="center"><a href="{{ data.official_website }}" target="_blank" style="font-size: 20px;"><b>Click Here </b></a></h1>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            &nbsp;
+            <div>
+            </div>
+            </td>
+            <td>
+        <!-- #END# Basic Validation --> 
+        <!-- Advanced Validation -->
+       
+        <!-- #END# Validation Stats --> 
+    </div>
+</section>
+
+<!-- Jquery Core Js --> 
+<script src="static/assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="static/assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+
+<script src="static/new/assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Jquery Validation Plugin Css --> 
+<script src="static/new/assets/plugins/jquery-steps/jquery.steps.js"></script> <!-- JQuery Steps Plugin Js --> 
+
+<script src="static/assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="static/assets/js/pages/forms/form-validation.js"></script> 
+<script src="static/datatables/datatables/jquery.dataTables.min.js"></script>
+<script src="static/datatables/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/datatables-demo.js"></script>
+</body>
+
+{#</html>#}
+{% endblock %}

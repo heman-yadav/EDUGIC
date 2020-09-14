@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Update Job
+                <small>Welcome to Edit Page...</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="post" action="{% url 'update_job' %}">
+                                {% csrf_token %}
+{#                                <input type="hidden" name="" value="{{ data.job_name }}">#}
+                                <label for="email_address">Job Name</label>
+                                <select class="form-control show-tick" name="job_name">
+                                    {% if data.job_name == 'Ketchup' %}
+                                    <option selected>Ketchup</option>
+                                    {% else %}
+                                    <option>Ketchup</option>
+                                    {% endif %}
+                                    {% if data.job_name == 'Relish' %}
+                                    <option selected>Relish</option>
+                                    {% else %}
+                                    <option>Relish</option>
+                                    {% endif %}
+
+                                </select>
+
+                                <label for="email_address">Subject Name</label>
+                                <select class="form-control show-tick" name="subject_name">
+                                    {% if data.subject_name  == 'Ketchup' %}
+                                    <option selected>Ketchup</option>
+                                    {% else %}
+                                    <option>Ketchup</option>
+                                    {% endif %}
+                                    {% if data.subject_name  == 'Relish' %}
+                                    <option selected>Relish</option>
+                                    {% else %}
+                                    <option>Relish</option>
+                                    {% endif %}
+                                </select>
+
+                                <label for="email_address">Category Name</label>
+                                <select class="form-control show-tick" name="category_name">
+                                    {% if data.category_name == 'Ketchup' %}
+                                    <option selected>Ketchup</option>
+                                    {% else %}
+                                    <option>Ketchup</option>
+                                    {% endif %}
+                                    {% if data.category_name == 'Relish' %}
+                                    <option selected>Relish</option>
+                                    {% else %}
+                                    <option>Relish</option>
+                                    {% endif %}
+                                </select>
+                                <button type="submit" class="btn btn-success  btn-round waves-effect">Save</button>
+                                <button type="reset" class="btn btn-warning  btn-round waves-effect">Reset</button>
+                                <a href="/job" class="btn btn-danger  btn-round waves-effect">Close</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+</body>
+
+<!-- Mirrored from www.wrraptheme.com/templates/square/html/light/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2019 17:45:30 GMT -->
+{#</html>#}
+{% endblock %}

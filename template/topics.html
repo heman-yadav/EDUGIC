@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+<form method="post" action="{% url 'multiple_delete_topics' %}">
+{% csrf_token %}
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Topics</h2>
+             </div>
+             <div class="btn-group" style="margin-left: 15px;">
+                <a href="{% url 'add_topics' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Topics</a>
+{#                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#largeModal12"><span class="fa fa-plus-circle"></span>&nbsp View</a>#}
+{#                <a href="" name="editallfrm" data-toggle="modal" data-target="#largeModal" id="" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Edit</a>#}
+                 <button type="submit" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</button>
+            </div>
+            </div>
+
+            <div class="card" style="padding: 10px; margin-top: 15px;">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                            <th><input type="checkbox" name="selectAll" value="deleteall" id="selectAll"/></th>
+                            <th>Id</th>
+                            <th>Subject Name</th>
+                            <th>Topic Name</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        {% for i in topics %}
+                        <tbody>
+
+                            <tr>
+                                <td><input type="checkbox" name="selectAll" id="selectAll" value="{{ i.id }}"/></td>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.subject_name }}</td>
+                                <td>{{ i.topic_name }}</td>
+                                <td hidden>{{ i.id }}</td>
+                                <td>
+                                    <a href="{% url 'edit_topics' %}?id={{ i.id }}" class="btn bg-warning waves-effect waves-light ">Edit</a>
+                                    <a href="{% url 'view_topic' %}?id={{ i.id }}" class="btn bg-warning waves-effect waves-light ">View</a>
+                                    <a href="{% url 'delete_topics' %}?id={{ i.id }} "  class="btn bg-blue waves-effect waves-light ">Delete</a>
+                        </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</section>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="container">
+                    <div class="modal-header">
+                            <h4 class="title" id="largeModalLabel">Edit</h4>
+                        </div>
+                        <form method="post" action="{% url 'topics' %}">
+                            {% csrf_token %}
+                                <label for="email_address">Subject Name</label>
+                                <select class="form-control show-tick" name="subject_name">
+                                    <option>---Select Subject Name---</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <label for="email_address">Topic Name</label>
+                                <select class="form-control show-tick" name="topic_name">
+                                    <option>---Select Topic Name---</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <button type="submit" class="btn btn-default btn-round waves-effect">SAVE</button>
+                                <button type="reset" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="largeModal12" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="container">
+                    <div class="modal-header">
+                            <h4 class="title" id="largeModalLabel">Edit</h4>
+                        </div>
+                        <form method="post" action="{% url 'topics' %}">
+                            {% csrf_token %}
+
+                                <button type="submit" class="btn btn-default btn-round waves-effect">SAVE</button>
+                                <button type="reset" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Jquery Core Js -->
+{% endblock %}

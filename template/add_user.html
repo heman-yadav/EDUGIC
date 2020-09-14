@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Add User
+                <small>Welcome to EDUGIC</small>
+                </h2>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid">        
+            <!-- Vertical Layout -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <form method="post" action="{% url 'add_user' %}">
+                                {% csrf_token %}
+                                <label for="email_address">User Level</label>
+                                <select class="form-control show-tick" name="user_level">
+                                    <option>Administrator</option>
+                                    <option>Instructor</option>
+                                    <option>Manager</option>
+                                </select>  
+                                <label for="email_address">Group</label>
+                                <select class="form-control show-tick" name="group">
+                                    <option>CPMT</option>
+                                    <option>IIT</option>
+                                    <option>Scholarship Exam Class 12th</option>
+                                </select>  
+                                <label for="email_address">Username</label>
+                                <div class="form-group">                                
+                                    <input type="text" name="username" id="email_address" class="form-control" placeholder="Enter your Username">
+                                </div>
+                                <label for="password">Password</label>
+                                <div class="form-group">                                
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                                </div>
+                                <label for="email_address">Name</label>
+                                <div class="form-group">                                
+                                    <input type="text" name="name" id="email_address" class="form-control" placeholder="Enter your Name">
+                                </div>
+                                <label for="password">Email</label>
+                                <div class="form-group">                                
+                                    <input type="email" name="email" id="password" class="form-control" placeholder="Enter your Email">
+                                </div>
+                                <label for="password">Mobile</label>
+                                <div class="form-group">                                
+                                    <input type="number" name="mobile" id="password" class="form-control" placeholder="Enter your Mobile">
+                                </div>
+                                <button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Save</button>
+                                <a href="{% url 'users' %}" class="btn btn-raised btn-primary btn-round waves-effect">Close</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+
+{% endblock %}

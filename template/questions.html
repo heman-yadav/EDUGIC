@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+<section class="content home">
+<form method="post" action="{% url 'multiple_delete_question' %}">
+{% csrf_token %}
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Question</h2>
+             </div>            
+             <div class="btn-group" >
+                <a href="{% url 'add_question' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Add New Question</a>
+                <a href="" name="" id="" data-toggle="modal" data-target="#largeModal1" class="btn btn-warning"><span class="fa fa-edit"></span>&nbsp;Import/Export Question</a>               
+                <button type="submit" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Delete</button>
+            </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card" style="padding: 10px;">
+            <div class="body">
+                <div class="row clearfix">
+                        <div class="col-md-4">
+                            <select class="form-control show-tick">
+                                <option>All Subjects</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select> 
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control show-tick">
+                                <option>All Topics</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control show-tick">
+                                <option>All Sub Topics</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                    </div>
+            
+            
+                <div class="row clearfix" style="margin-top: 20px;margin-bottom: 20px;">
+                        <div class="col-md-4">
+                            <select class="form-control show-tick">
+                                <option>All Question Type</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select> 
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control show-tick">
+                                <option>All Difficulty Level</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="add_question.html" class="btn btn-success"><span class="fa fa-plus-circle"></span>&nbsp;Search</a>  
+                        </div>
+                        <div class="col-md-3">
+                            <a href="" name="deleteallfrm" id="deleteallfrm"  class="btn btn-danger"><span class="fa fa-trash"></span>&nbsp;Reset</a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding: 10px; margin-top: 15px;">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="selectAll" value="selectAll" id="selectAll"/></th>
+                                <th>Id</th>
+                                <th>Passage Id</th>
+                                <th>Question Type</th>
+                                <th>Question </th>
+                                <th>True/False </th>
+                                <th>Fill In The Blanks </th>
+                                <th>Subjects</th>
+                                <th>Topics</th>
+                                <th>Sub Topics</th>
+                                <th>Group</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in addquestion %}
+                            <tr>
+                                <td><input type="checkbox" name="selectAll" id="selectAll" value="{{ i.id }}"/></td>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.passage_id }}</td>
+                                <td>{{ i.ques_type }}</td>
+                                <td>{{ i.question }}</td>
+{#                                <td>{{ i.option1 }}, {{ i.option2 }}, {{ i.option3 }}, {{ i.option4 }}</td>#}
+                                <td>{{ i.true_false1 }}</td>
+                                <td>{{ i.black_space }}</td>
+                                <td>{{ i.subject }}</td>
+                                <td>{{ i.topics }}</td>
+                                <td>{{ i.sub_topics }}</td>
+                                <td>{{ i.group }}</td>
+                                <td hidden>{{ i.id }}</td>
+
+                                <td>
+{#                                    <a href="javascript:void(0);" class="btn btn-default waves-effect waves-float btn-sm waves-green"><i class="zmdi zmdi-edit"></i></a>#}
+                                    <a href="{% url 'edit_question' %}?id={{ i.id }}" class="btn btn-warning">Edit</a>
+                                    <a href="{% url 'view_question' %}?id={{ i.id }}" class="btn btn-warning">View</a>
+                                    <a href="{% url 'delete_questions' %}?id={{ i.id }}" class="btn btn-danger">Delete</a>
+                        </td>{% endfor %}
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+</section>
+
+<!-- Jquery Core Js --> 
+
+
+<script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    
+    $('#mytable').dataTable();
+} );
+</script>
+
+
+
+
+{% endblock %}
